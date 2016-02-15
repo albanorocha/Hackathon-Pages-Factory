@@ -11,10 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129212932) do
+ActiveRecord::Schema.define(version: 20160203084452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "descriptor"
+    t.string   "name"
+    t.date     "date"
+    t.string   "address"
+    t.text     "description"
+    t.string   "image"
+    t.boolean  "release_sign_up"
+    t.boolean  "published"
+    t.integer  "admin_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "events", ["admin_id"], name: "index_events_on_admin_id", using: :btree
+
+  create_table "makers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -43,6 +69,8 @@ ActiveRecord::Schema.define(version: 20160129212932) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.integer  "system_user_id"
+    t.string   "system_user_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -50,5 +78,6 @@ ActiveRecord::Schema.define(version: 20160129212932) do
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["system_user_type", "system_user_id"], name: "index_users_on_system_user_type_and_system_user_id", using: :btree
 
 end
