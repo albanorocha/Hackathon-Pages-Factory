@@ -1,3 +1,11 @@
 class Event < ActiveRecord::Base
-  belongs_to :admin
+  has_many :event_users
+  has_many :users, :through => :event_users
+  has_many :teams
+  has_many :projects, through: :teams
+
+  def to_param
+    "#{code}".parameterize
+  end
+
 end

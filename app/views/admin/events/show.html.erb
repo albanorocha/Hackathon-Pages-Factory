@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Descriptor:</strong>
-  <%= @event.descriptor %>
+  <strong>Code:</strong>
+  <%= @event.code %>
 </p>
 
 <p>
@@ -41,4 +41,6 @@
 </p>
 
 <%= link_to 'Edit', edit_admin_event_path(@event) %> |
-<%= link_to 'Back', admin_events_path %>
+<%= link_to 'Back', admin_events_path %> |
+<%= link_to 'Users', admin_event_users_path %> |
+<%= link_to 'Teams', admin_event_teams_path %>

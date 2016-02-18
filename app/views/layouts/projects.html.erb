@@ -1,22 +1,155 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "My Application" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "My Application" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'project', media: 'all', 'data-turbolinks-track' => true %>
+
     <%= csrf_meta_tags %>
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
   </head>
   <body>
-    Projects
-    <header>
-      <%= render 'layouts/navigation' unless current_page?(root_path) %>
-    </header>
+      <div class="text-center">
+      <h1>Projects</h1>
       <%= render 'layouts/messages' %>
-      <%= yield %>
+      <div id="page" class="page">
+        <div class="pixfort_normal_1 pix_builder_bg" style="outline-offset: -3px;">
+            <div class="header_style header_nav_1">
+                <div class="container">
+                    <div class="sixteen columns firas2">
+                        <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg pix_nav_1">
+                            <div class="containerss">
+
+                                <div class="navbar-header">
+                                    <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+                                        <span class="sr-only">Toggle navigation</span>
+                                    </button>
+                                </div>
+
+                                <div class="nav navbar-nav navbar-left">
+                                    <a class="navbar-brand" href="#">
+                                        <%= image_tag("logo.png", width:"90", height: "60") %>
+
+                                    </a>
+                                </div>
+                                <div id="navbar-collapse-02" class="collapse navbar-collapse">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="#problema">Problema</a></li>
+                                        <li><a href="#solucao">Solução</a></li>
+                                        <li><a href="#equipe">Equipe</a></li>
+                                        <li><a href="#"><span class="pix_header_button pix_builder_bg">Contato</span></a></li>
+                                    </ul>
+                                </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container -->
+                        </nav>
+                    </div>
+                </div><!-- container -->
+            </div>
+        </div>
+
+    <div class="pixfort_normal_1 creative_video_header">
+        <div class="has-video creative_header">
+
+            <div class="pix_video_div section_video">
+                <%= image_tag("video_bg.jpg", class: "bgvid") %>
+            </div>
+
+            <div class="section_wrapper clearfix">
+                <div class="container">
+                    <div class="sixteen columns context_style">
+                        <div class="title_style">
+                            <span><%= yield :name %></span>
+                        </div>
+                        <div class="subtitle_style">
+                            <span class="creative_h_text">
+                                <span>
+                                  <%= yield :description %>
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="note_st">
+                            <span class="creative_note">*Note: Alguma observação</span>
+                        </div>
+                    </div>
+                </div><!-- container -->
+            </div>
+        </div>
+    </div>
+
+        <div class="pixfort_medical_16 pix_builder_bg">
+                <div id="problema" class="Designs_style pix_builder_bg" style="outline-offset: -3px;">
+                  <div class="container">
+                    <div class="sixteen columns">
+                        <div class="eight columns  alpha">
+                                <p class="med_tit">Qual o problema?</p>
+                                <p class="med_text"> <%= yield :why %></p>
+                        </div>
+                        <div class="eight columns med_call omega">
+                          <%= image_tag("machine.png", class: "img4_st") %>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <div class="pixfort_medical_16 pix_builder_bg">
+                <div id="solucao" class="Designs_style pix_builder_bg" style="outline-offset: -3px;">
+                  <div class="container">
+                    <div class="sixteen columns">
+                        <div class="eight columns  alpha">
+                                <p class="med_tit">Qual a solução? Qual a ideia..</p>
+                                <p class="med_text"> <%= yield :how %></p>
+                        </div>
+                        <div class="eight columns med_call omega">
+                          <%= image_tag("work.png", class: "img4_st") %>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <div class="pixfort_medical_16 pix_builder_bg">
+            <div id="equipe" class="Designs_style pix_builder_bg" style="outline-offset: -3px;">
+              <div class="container">
+                <div class="sixteen columns">
+                    <div class="eight columns  alpha">
+                            <p class="med_tit">Quem é a equipe?</p>
+                            <p class="med_text"> <%= yield :what %></p>
+                            <div class="center_text">
+                               <span class="med_btn" style=""><a href="#">Contato</a></span>
+                                <br>
+                                <br>
+                            </div>
+                    </div>
+                    <div class="eight columns med_call omega">
+                      <%= image_tag("team.jpg", class: "img4_st") %>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <div class="medical_intro">
+            <div class="join_us_section" style="background: url(<%= asset_path 'photo.jpg' %>) #000 fixed no-repeat !important;">
+                <div class="container">
+                </div>
+            </div>
+    </div>
+
+        <div class="pix_builder_bg dark" >
+            <div class="footer3">
+                    <div class="center_text">
+                    <span class="creative_note">&copy; Copyright 2016 - MedHacker. Todos os direitos reservados.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      </div>
+
+      <%= javascript_include_tag 'project', 'data-turbolinks-track' => true %>
   </body>
 </html>

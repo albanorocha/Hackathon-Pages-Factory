@@ -1,0 +1,18 @@
+<%= simple_form_for([:admin_event, @team_user]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :user, :collection => @users, :label_method => :name,
+        :value_method => :id , :label => "Usuário" ,:include_blank => false %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :role, :collection => TeamUser.roles, :label_method => :first,
+        :value_method => :first , :label => "Role" ,:include_blank => false %>
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

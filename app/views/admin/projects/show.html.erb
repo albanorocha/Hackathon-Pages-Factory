@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h2> <b> <%= @project.name %> </b> </h2>
+<h3> Why </h3>
+<p><%= @project.why %> </p>
+<h3> How </h3>
+<p><%= @project.how %> </p>
+<h3> What </h3>
+<p><%= @project.what %> </p>
+
+<br>
+
+<%= link_to 'Edit', edit_admin_event_team_project_path(@project, :code => @event.code,
+    :event_team_id => @team)  %> |
+<%= link_to 'Back', admin_event_team_projects_path(:code => @event.code,
+    :event_team_id => @team) %>

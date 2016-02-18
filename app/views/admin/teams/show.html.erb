@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <b><%= @team.name %> </b> </h1>
+
+
+<h2> Equipe </h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team_users.each do |team_user| %>
+      <tr>
+        <td><%= team_user.user.name %></td>
+        <td><%= team_user.role %></td>
+        <td><%= link_to 'Show', admin_event_team_user_path(team_user,
+          event_team_id: team_user.team, code: @event.code) %></td>
+        <td><%= link_to 'Edit', edit_admin_event_team_user_path(team_user,
+          event_team_id: team_user.team, code: @event.code) %></td>
+        <td><%= link_to 'Destroy', admin_event_team_user_path(team_user,
+          event_team_id: team_user.team, code: @event.code), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2> Projetos </h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team.projects.each do |team_project| %>
+      <tr>
+        <td><%= team_project.name %></td>
+        <td><%= link_to 'Show', admin_event_team_project_path(team_project,
+          event_team_id: team_project.team, code: @event.code) %></td>
+        <td><%= link_to 'Edit', edit_admin_event_team_project_path(team_project,
+          event_team_id: team_project.team, code: @event.code) %></td>
+        <td><%= link_to 'Destroy', admin_event_team_project_path(team_project,
+          event_team_id: team_project.team, code: @event.code), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_admin_event_team_path(@team, code: @event.code) %> |
+<%= link_to 'Back', admin_event_teams_path(code: @event.code) %> |
+<%= link_to 'Members', admin_event_team_users_path(code: @event.code, event_team_id: @team) %> |
+<%= link_to 'Projects', admin_event_team_projects_path(code: @event.code, event_team_id: @team) %>
+

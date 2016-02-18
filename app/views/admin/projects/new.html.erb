@@ -1,0 +1,6 @@
+<h1>New <b><%= @team.name %> </b> Project</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', admin_event_team_projects_path(:code => @event.code,
+    :event_team_id => @team) %>

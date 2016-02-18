@@ -21,13 +21,21 @@ class Admin::EventsController < Admin::AdminController
   def edit
   end
 
+
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.code.upcase!
+
+    @event_user = EventUser.new
+    @event_user.user = current_user
+    @event_user.event = @event
+    @event_user.role = 1
 
     respond_to do |format|
       if @event.save
+        @event_user.save
         format.html { redirect_to [:admin, @event], notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: [:admin, @event] }
       else
@@ -42,6 +50,8 @@ class Admin::EventsController < Admin::AdminController
   def update
     respond_to do |format|
       if @event.update(event_params)
+        @event.code.upcase!
+        @event_user.save
         format.html { redirect_to [:admin, @event], notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: [:admin, @event] }
       else
@@ -64,11 +74,11 @@ class Admin::EventsController < Admin::AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.find_by(code: params[:code].upcase)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:descriptor, :name, :date, :address, :description, :image, :release_sign_up, :published)
+      params.require(:event).permit(:code, :name, :date, :address, :description, :image, :release_sign_up, :published)
     end
 end

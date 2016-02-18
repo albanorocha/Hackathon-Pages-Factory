@@ -1,6 +1,5 @@
-class Admin < ActiveRecord::Base
-  has_one :user, as: :system_user
-  has_many :events
-
-  accepts_nested_attributes_for :user
+module Admin
+  def self.table_name_prefix
+    'admin_'
+  end
 end

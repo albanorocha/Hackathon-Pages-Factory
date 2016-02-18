@@ -11,18 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203084452) do
+ActiveRecord::Schema.define(version: 20160217212526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
+  create_table "event_users", force: :cascade do |t|
+    t.integer  "role"
+    t.integer  "user_id"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "event_users", ["event_id"], name: "index_event_users_on_event_id", using: :btree
+  add_index "event_users", ["user_id"], name: "index_event_users_on_user_id", using: :btree
+
   create_table "events", force: :cascade do |t|
-    t.string   "descriptor"
+    t.string   "code"
     t.string   "name"
     t.date     "date"
     t.string   "address"
@@ -30,17 +36,43 @@ ActiveRecord::Schema.define(version: 20160203084452) do
     t.string   "image"
     t.boolean  "release_sign_up"
     t.boolean  "published"
-    t.integer  "admin_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  add_index "events", ["admin_id"], name: "index_events_on_admin_id", using: :btree
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.text     "why"
+    t.text     "how"
+    t.text     "what"
+    t.text     "description"
+    t.integer  "team_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
-  create_table "makers", force: :cascade do |t|
+  add_index "projects", ["team_id"], name: "index_projects_on_team_id", using: :btree
+
+  create_table "team_users", force: :cascade do |t|
+    t.integer  "role"
+    t.integer  "user_id"
+    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "team_users", ["team_id"], name: "index_team_users_on_team_id", using: :btree
+  add_index "team_users", ["user_id"], name: "index_team_users_on_user_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "teams", ["event_id"], name: "index_teams_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -69,8 +101,6 @@ ActiveRecord::Schema.define(version: 20160203084452) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
-    t.integer  "system_user_id"
-    t.string   "system_user_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -78,6 +108,5 @@ ActiveRecord::Schema.define(version: 20160203084452) do
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["system_user_type", "system_user_id"], name: "index_users_on_system_user_type_and_system_user_id", using: :btree
 
 end

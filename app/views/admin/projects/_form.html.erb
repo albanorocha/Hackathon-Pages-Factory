@@ -1,0 +1,32 @@
+<%= simple_form_for([:admin, @project], url: admin_event_team_projects_path(
+    @project, :code => @event.code, :event_team_id => @team)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :image %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :why %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :how %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :what %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

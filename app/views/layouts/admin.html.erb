@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "My Application" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "My Application" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'administrator', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
   </head>
 
   <body>
@@ -31,7 +31,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-heartbeat"></i>
-                            <span class="badge bg-theme">4</span>
+                            <span class="badge bg-theme">!</span>
                         </a>
                         <ul class="dropdown-menu extended tasks-bar">
                             <div class="notify-arrow notify-arrow-green"></div>
@@ -49,7 +49,9 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Sair</a></li>
+                  <li>
+                    <%= link_to "Sair", destroy_user_session_path, :method=>'delete', class: 'logout'%>
+                  </li>
               </ul>
             </div>
         </header>
@@ -62,29 +64,30 @@
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-                  <p class="centered"><a href="config.html">
+              <ul class="sidebar-menu">
+                  <p class="centered"><a>
                   <%= image_tag("ui-danro.jpg", class: "img-circle",width:"60" ) %></a></p>
-                  <h5 class="centered">Paulo Schor</h5>
+                  <h5 class="centered"> <%= current_user.name %> </h5>
 
                   <li class="mt">
-                      <a class="" href="index.html">
-                          <i class="fa fa-th"></i>
-                          <span>Eventos</span>
-                      </a>
+                     <%= link_to(admin_events_path) do %>
+                         <i class="fa fa-th"></i>
+                         <span>Eventos</span>
+                     <% end %>
                   </li>
                   <li class="">
-                      <a class="" href="users.html">
-                          <i class="fa fa-user-md"></i>
-                          <span>Usuários</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="config.html">
+                     <%= link_to (admin_events_path) do %>
                           <i class="fa fa-cogs"></i>
-                          <span>Configurações</span>
-                      </a>
+                          <span>Portfólio</span>
+                     <% end %>
                   </li>
+                  <li class="">
+                    <%= link_to(admin_users_path) do %>
+                       <i class="fa fa-user-md"></i>
+                       <span>Usuários</span>
+                    <% end %>
+                  </li>
+
 
               </ul>
               <!-- sidebar menu end-->
@@ -101,179 +104,14 @@
 
               <div class="row">
                 <div class="col-lg-12 main-chart">
-                  <div class="row centered">
-                    <h2> <a href="new_event.html"> <i class="fa fa-plus-circle"></i> Evento </a> </h2>
-                  </div><!-- /row mt -->
-                  <div class="row mt">
-
-                    <div class="col-md-4 col-sm-4 mb">
-
-
-                  <div class="stock card">
-               <div class="col-xs-4 col-xs-offset-8">
-                 <a href="edit_event.html" class="btn btn-sm btn-default btn-clear-g2">EDITAR</a>
-               </div>
-                    <div class="stock-chart">
-                        <div id="chart"></div>
-                </div>
-                <div class="stock current-price">
-                  <div class="row centered panel2">
-                        <div class="info col-sm-12"><h4><a href="show_event.html">Brasília 2015 - Relação Médico Paciente </a></h4>
-                  </div>
-                  </div>
-                </div>
-                <div class="summary">
-                        <strong> 50 </strong> <span> Medhackers </span>
-                           <abbr> | </abbr>
-                           <strong> 4 </strong> <span> Equipes </span>
-                           <abbr> | </abbr>
-                           <strong> 10 </strong> <span> Projetos </span>
-                </div>
-                  </div>
-
-
-                    </div><!-- /col-md-4-->
-
-                    <div class="col-md-4 col-sm-4 mb">
-
-                            <div class="stock card">
-               <div class="col-xs-4 col-xs-offset-8">
-                 <a href="edit_event.html" class="btn btn-sm btn-default btn-clear-g2">EDITAR</a>
-               </div>
-                    <div class="stock-chart">
-                        <div id="chart"></div>
-                </div>
-                <div class="stock current-price">
-                  <div class="row centered panel2">
-                        <div class="info col-sm-12"><h4><a href="#">Brasília 2015 - Relação Médico Paciente </a></h4>
-                  </div>
-                  </div>
-                </div>
-                <div class="summary">
-                        <strong> 50 </strong> <span> Medhackers </span>
-                           <abbr> | </abbr>
-                           <strong> 4 </strong> <span> Equipes </span>
-                           <abbr> | </abbr>
-                           <strong> 10 </strong> <span> Projetos </span>
-                </div>
-                  </div>
-                    </div><!-- /col-md-4 -->
-
-
-                    <div class="col-md-4 col-sm-4 mb">
-
-                               <div class="stock card">
-               <div class="col-xs-4 col-xs-offset-8">
-                 <a href="edit_event.html" class="btn btn-sm btn-default btn-clear-g2">EDITAR</a>
-               </div>
-                    <div class="stock-chart">
-                        <div id="chart"></div>
-                </div>
-                <div class="stock current-price">
-                  <div class="row centered panel2">
-                        <div class="info col-sm-12"><h4><a href="show_event.html">Brasília 2015 - Relação Médico Paciente </a></h4>
-                  </div>
-                  </div>
-                </div>
-                <div class="summary">
-                        <strong> 50 </strong> <span> Medhackers </span>
-                           <abbr> | </abbr>
-                           <strong> 4 </strong> <span> Equipes </span>
-                           <abbr> | </abbr>
-                           <strong> 10 </strong> <span> Projetos </span>
-                </div>
-                  </div>
-                    </div><!-- /col-md-4 -->
-
-                </div><!-- /row -->
-
-                  <div class="row">
-
-                    <div class="col-md-4 col-sm-4 mb">
-       <div class="stock card">
-               <div class="col-xs-4 col-xs-offset-8">
-                 <a href="edit_event.html" class="btn btn-sm btn-default btn-clear-g2">EDITAR</a>
-               </div>
-                    <div class="stock-chart">
-                        <div id="chart"></div>
-                </div>
-                <div class="stock current-price">
-                  <div class="row centered panel2">
-                        <div class="info col-sm-12"><h4><a href="show_event.html">Brasília 2015 - Relação Médico Paciente </a></h4>
-                  </div>
-                  </div>
-                </div>
-                <div class="summary">
-                        <strong> 50 </strong> <span> Medhackers </span>
-                           <abbr> | </abbr>
-                           <strong> 4 </strong> <span> Equipes </span>
-                           <abbr> | </abbr>
-                           <strong> 10 </strong> <span> Projetos </span>
-                </div>
-                  </div>
-                    </div><!-- /col-md-4-->
-
-                    <div class="col-md-4 col-sm-4 mb">
-                           <div class="stock card">
-               <div class="col-xs-4 col-xs-offset-8">
-                 <a href="edit_event.html" class="btn btn-sm btn-default btn-clear-g2">EDITAR</a>
-               </div>
-                    <div class="stock-chart">
-                        <div id="chart"></div>
-                </div>
-                <div class="stock current-price">
-                  <div class="row centered panel2">
-                        <div class="info col-sm-12"><h4><a href="show_event.html">Brasília 2015 - Relação Médico Paciente </a></h4>
-                  </div>
-                  </div>
-                </div>
-                <div class="summary">
-                        <strong> 50 </strong> <span> Medhackers </span>
-                           <abbr> | </abbr>
-                           <strong> 4 </strong> <span> Equipes </span>
-                           <abbr> | </abbr>
-                           <strong> 10 </strong> <span> Projetos </span>
-                </div>
-                  </div>
-                    </div><!-- /col-md-4 -->
-
-                    <div class="col-md-4 col-sm-4 mb">
-                        <div class="stock card">
-               <div class="col-xs-4 col-xs-offset-8">
-                 <a href="edit_event.html" class="btn btn-sm btn-default btn-clear-g2">EDITAR</a>
-               </div>
-                    <div class="stock-chart">
-                        <div id="chart"></div>
-                </div>
-                <div class="stock current-price">
-                  <div class="row centered panel2">
-                        <div class="info col-sm-12"><h4><a href="show_event.html">Brasília 2015 - Relação Médico Paciente </a></h4>
-                  </div>
-                  </div>
-                </div>
-                <div class="summary">
-                        <strong> 50 </strong> <span> Medhackers </span>
-                           <abbr> | </abbr>
-                           <strong> 4 </strong> <span> Equipes </span>
-                           <abbr> | </abbr>
-                           <strong> 10 </strong> <span> Projetos </span>
-                </div>
-                  </div>
-
-                    </div><!-- /col-md-4 -->
-                </div><!-- /row -->
+                  <%= render 'layouts/messages' %>
+                  <%= yield %>
               </div><!-- /col-lg-12 END SECTION MIDDLE -->
-
-
-      <!-- **********************************************************************************************************************************************************
-      RIGHT SIDEBAR CONTENT
-      *********************************************************************************************************************************************************** -->
-                  <!-- CALENDAR-->
               </div><!--/row -->
           </section>
       </section>
-
       <!--main content end-->
+
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
@@ -286,64 +124,8 @@
       <!--footer end-->
   </section>
 
- <!--
-  <script type="text/javascript">
-        $(document).ready(function () {
-        var unique_id = $.gritter.add({
-            // (string | mandatory) the heading of the notification
-            title: 'Welcome to Dashgum!',
-            // (string | mandatory) the text inside the notification
-            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
-            // (string | optional) the image to display on the left
-            image: 'assets/img/ui-sam.jpg',
-            // (bool | optional) if you want it to fade out on its own or just sit there
-            sticky: true,
-            // (int | optional) the time you want it to be alive for before fading out
-            time: '',
-            // (string | optional) the class name you want to apply to that specific message
-            class_name: 'my-sticky-class'
-        });
-
-        return false;
-        });
-  </script>
-  -->
-  <!--
-  <script type="application/javascript">
-        $(document).ready(function () {
-            $("#date-popover").popover({html: true, trigger: "manual"});
-            $("#date-popover").hide();
-            $("#date-popover").click(function (e) {
-                $(this).hide();
-            });
-
-            $("#my-calendar").zabuto_calendar({
-                action: function () {
-                    return myDateFunction(this.id, false);
-                },
-                action_nav: function () {
-                    return myNavFunction(this.id);
-                },
-                ajax: {
-                    url: "show_data.php?action=1",
-                    modal: true
-                },
-                legend: [
-                    {type: "text", label: "Special event", badge: "00"},
-                    {type: "block", label: "Regular event", }
-                ]
-            });
-        });
+   <%= javascript_include_tag 'administrator', 'data-turbolinks-track' => true %>
 
 
-        function myNavFunction(id) {
-            $("#date-popover").hide();
-            var nav = $("#" + id).data("navigation");
-            var to = $("#" + id).data("to");
-            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-        }
-    </script> -->
-
-   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
 </html>

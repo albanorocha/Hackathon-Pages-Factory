@@ -1,0 +1,7 @@
+<h1><b><%=@event.code %></b>  <%= @event.name %></h1>
+<p><%= @event.description %></p>
+
+<% @projects.each do |project| %>
+  <h3> <%= link_to project.name, project_path(code: @event, project_name: project.name.parameterize) %> </h3>
+  <p> <%= project.description %> </p>
+<%end%>
