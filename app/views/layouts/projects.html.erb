@@ -1,8 +1,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "My Application" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "My Application" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "MedHacker" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Medhacker" %>">
     <%= stylesheet_link_tag 'project', media: 'all', 'data-turbolinks-track' => true %>
     <%= favicon_link_tag "favicon.ico"%>
     <%= csrf_meta_tags %>
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
   <body>
-  
+    
       <%= render 'layouts/messages' %>
 
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #fff;">
@@ -174,8 +174,8 @@
 </div><!-- /.container -->
 
 <!-- FOOTER -->
+<footer>
 <div class="container text-center">
-  <footer>
     <p class="pull-center">
         <a href="#"><i class="fa fa-facebook-official fa-3x"></i></a> &nbsp;&nbsp;&nbsp;
         <a href="#"><i class="fa fa-instagram fa-3x"></i></a> &nbsp;&nbsp;&nbsp;
@@ -183,8 +183,10 @@
     </p>
     <br>
     <p>&copy; Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados</p>
-  </footer>
 </div>
+<hr>
+</footer>
+
     <%= javascript_include_tag 'project', 'data-turbolinks-track' => true %>
   </body>
 </html>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "My Application" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Medhacker" %>">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= favicon_link_tag "favicon.ico"%>
@@ -14,13 +14,13 @@
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Medhacker" %></title>
   </head>
 <!-- NAVBAR
 ================================================== -->
-  <body>
+  <body style="min-height: auto;">
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -29,34 +29,43 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MedHacker</a>
+          
+          <%= link_to (root_path), class: "navbar-brand" do %>
+            <%= image_tag 'logo2.png', height: 50 %>
+          <% end %>
+    
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><%=link_to "Eventos", events_path %></li>
-            </li>
-          </ul>
           <ul class="nav navbar-nav navbar-right">
+
+            <li><%=link_to "Eventos", events_path %>
             <%= render 'layouts/nav_links_for_auth' %>
+            </li>
+          
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-
+    
     <%= render 'layouts/messages' %>
     <%= yield %>
 
+
+    <hr class="featurette-divider">
+
     <!-- FOOTER -->
-    <div class="container">
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
-    </div>
+<footer>
+<div class="container text-center">
+    <p class="pull-right">
+        <%= link_to (admin_root_path) do %><i class="fa fa-cog fa-2x"></i>
+        <% end %>
+    </p>
+    <br>
+    <p>&copy; Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados</p>
+</div>
+<hr>
+</footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

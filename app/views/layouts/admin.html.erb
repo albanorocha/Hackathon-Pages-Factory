@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "My Application" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "My Application" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Admin - MedHacker" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Admin - MedHacker" %>">
     <%= stylesheet_link_tag 'administrator', media: 'all', 'data-turbolinks-track' => true %>
     <%= favicon_link_tag "favicon.ico"%>
     <%= csrf_meta_tags %>
@@ -22,8 +22,10 @@
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-toggle="tooltip" data-placement="right" title="Toggle Navigation"></div>
               </div>
-            <!--logo start-->
-            <a href="index.html" class="logo"><b>MedHacker</b></a>
+            <!--logo start-->           
+            <%=link_to (admin_root_path) , class: "logo" do %>
+              <b>MedHacker</b>
+            <% end %>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -76,12 +78,7 @@
                          <span>Eventos</span>
                      <% end %>
                   </li>
-                  <li class="">
-                     <%= link_to (admin_events_path) do %>
-                          <i class="fa fa-cogs"></i>
-                          <span>Portfólio</span>
-                     <% end %>
-                  </li>
+
                   <li class="">
                     <%= link_to(admin_users_path) do %>
                        <i class="fa fa-user-md"></i>
@@ -112,18 +109,18 @@
           </section>
       </section>
       <!--main content end-->
-
+</section>
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              &copy;Copyright 2016 - MedHacker. Todos os direitos reservados.
+              &copy;Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados
               <a href="#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
       </footer>
       <!--footer end-->
-  </section>
+  
 
    <%= javascript_include_tag 'administrator', 'data-turbolinks-track' => true %>
 
