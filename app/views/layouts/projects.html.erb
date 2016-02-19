@@ -4,152 +4,187 @@
     <title><%= content_for?(:title) ? yield(:title) : "My Application" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "My Application" %>">
     <%= stylesheet_link_tag 'project', media: 'all', 'data-turbolinks-track' => true %>
-
+    <%= favicon_link_tag "favicon.ico"%>
     <%= csrf_meta_tags %>
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
   </head>
   <body>
-      <div class="text-center">
-      <h1>Projects</h1>
+  
       <%= render 'layouts/messages' %>
-      <div id="page" class="page">
-        <div class="pixfort_normal_1 pix_builder_bg" style="outline-offset: -3px;">
-            <div class="header_style header_nav_1">
-                <div class="container">
-                    <div class="sixteen columns firas2">
-                        <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg pix_nav_1">
-                            <div class="containerss">
 
-                                <div class="navbar-header">
-                                    <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
-                                        <span class="sr-only">Toggle navigation</span>
-                                    </button>
-                                </div>
-
-                                <div class="nav navbar-nav navbar-left">
-                                    <a class="navbar-brand" href="#">
-                                        <%= image_tag("logo.png", width:"90", height: "60") %>
-
-                                    </a>
-                                </div>
-                                <div id="navbar-collapse-02" class="collapse navbar-collapse">
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="#problema">Problema</a></li>
-                                        <li><a href="#solucao">Solução</a></li>
-                                        <li><a href="#equipe">Equipe</a></li>
-                                        <li><a href="#"><span class="pix_header_button pix_builder_bg">Contato</span></a></li>
-                                    </ul>
-                                </div><!-- /.navbar-collapse -->
-                            </div><!-- /.container -->
-                        </nav>
-                    </div>
-                </div><!-- container -->
-            </div>
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #fff;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="#">
+               <%= yield :name %>
+            </a>
+            <p class="navbar-text"><span class="fa fa-group"></span> <%= yield :team %></p>
         </div>
 
-    <div class="pixfort_normal_1 creative_video_header">
-        <div class="has-video creative_header">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
 
-            <div class="pix_video_div section_video">
-                <%= image_tag("video_bg.jpg", class: "bgvid") %>
-            </div>
+            </ul>          
+          
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="#problema">Problema</a></li>
+              <li><a href="#solucao">Solução</a></li>
+              <li><a href="#equipe">Equipe</a></li>
+            <form class="navbar-form navbar-right" role="search">
+            <button type="submit" class="btn btn-default">Contato</button>
+          </form>
+          </ul>
 
-            <div class="section_wrapper clearfix">
-                <div class="container">
-                    <div class="sixteen columns context_style">
-                        <div class="title_style">
-                            <span><%= yield :name %></span>
-                        </div>
-                        <div class="subtitle_style">
-                            <span class="creative_h_text">
-                                <span>
-                                  <%= yield :description %>
-                                </span>
-                            </span>
-                        </div>
 
-                        <div class="note_st">
-                            <span class="creative_note">*Note: Alguma observação</span>
-                        </div>
-                    </div>
-                </div><!-- container -->
-            </div>
-        </div>
-    </div>
 
-        <div class="pixfort_medical_16 pix_builder_bg">
-                <div id="problema" class="Designs_style pix_builder_bg" style="outline-offset: -3px;">
-                  <div class="container">
-                    <div class="sixteen columns">
-                        <div class="eight columns  alpha">
-                                <p class="med_tit">Qual o problema?</p>
-                                <p class="med_text"> <%= yield :why %></p>
-                        </div>
-                        <div class="eight columns med_call omega">
-                          <%= image_tag("machine.png", class: "img4_st") %>
-                        </div>
-                    </div>
-                  </div>
-            </div>
-        </div>
 
-        <div class="pixfort_medical_16 pix_builder_bg">
-                <div id="solucao" class="Designs_style pix_builder_bg" style="outline-offset: -3px;">
-                  <div class="container">
-                    <div class="sixteen columns">
-                        <div class="eight columns  alpha">
-                                <p class="med_tit">Qual a solução? Qual a ideia..</p>
-                                <p class="med_text"> <%= yield :how %></p>
-                        </div>
-                        <div class="eight columns med_call omega">
-                          <%= image_tag("work.png", class: "img4_st") %>
-                        </div>
-                    </div>
-                  </div>
-            </div>
-        </div>
-
-        <div class="pixfort_medical_16 pix_builder_bg">
-            <div id="equipe" class="Designs_style pix_builder_bg" style="outline-offset: -3px;">
-              <div class="container">
-                <div class="sixteen columns">
-                    <div class="eight columns  alpha">
-                            <p class="med_tit">Quem é a equipe?</p>
-                            <p class="med_text"> <%= yield :what %></p>
-                            <div class="center_text">
-                               <span class="med_btn" style=""><a href="#">Contato</a></span>
-                                <br>
-                                <br>
-                            </div>
-                    </div>
-                    <div class="eight columns med_call omega">
-                      <%= image_tag("team.jpg", class: "img4_st") %>
-                    </div>
-                </div>
-              </div>
-        </div>
-    </div>
-
-    <div class="medical_intro">
-            <div class="join_us_section" style="background: url(<%= asset_path 'photo.jpg' %>) #000 fixed no-repeat !important;">
-                <div class="container">
-                </div>
-            </div>
-    </div>
-
-        <div class="pix_builder_bg dark" >
-            <div class="footer3">
-                    <div class="center_text">
-                    <span class="creative_note">&copy; Copyright 2016 - MedHacker. Todos os direitos reservados.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
+        </div><!--/.nav-collapse -->
       </div>
+    </nav>
 
-      <%= javascript_include_tag 'project', 'data-turbolinks-track' => true %>
+
+   <!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active">
+      
+          <%= image_tag("video_bg.jpg")%>
+      
+      <div class="container">
+      
+        <div class="carousel-caption">
+      
+          <h1>Example headline.</h1>
+      
+          <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+          
+          <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="item">
+      
+          <%= image_tag("photo.jpg") %>
+      
+      <div class="container">
+        <div class="carousel-caption">
+          
+          <h1>Another example headline.</h1>
+          
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="item">
+      
+          <%= image_tag("blog-bg.jpg") %>
+
+      <div class="container">
+        <div class="carousel-caption">
+        
+          <h1>One more for good measure.</h1>
+
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="fa icon-prev" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="fa icon-next" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </a>
+</div><!-- /.carousel -->
+
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+  <!-- START THE FEATURETTES -->
+
+  <div id="problema" class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Qual o problema?</h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+      <%= image_tag("machine.png", class: "featurette-image img-responsive center-block img-thumbnail") %>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div id="solucao" class="row featurette">
+    <div class="col-md-7 col-md-push-5">
+      <h2 class="featurette-heading">Qual a solução?</h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5 col-md-pull-7">
+      <%= image_tag("work.png", class: "featurette-image img-responsive center-block img-thumbnail") %>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div id="equipe" class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Quem é a equipe?</h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+      <%= image_tag("team.jpg", class: "featurette-image img-responsive center-block img-thumbnail") %>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
+
+<!-- FOOTER -->
+<div class="container text-center">
+  <footer>
+    <p class="pull-center">
+        <a href="#"><i class="fa fa-facebook-official fa-3x"></i></a> &nbsp;&nbsp;&nbsp;
+        <a href="#"><i class="fa fa-instagram fa-3x"></i></a> &nbsp;&nbsp;&nbsp;
+        <a href="#"><i class="fa fa-youtube fa-3x"></i></a>    
+    </p>
+    <br>
+    <p>&copy; Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados</p>
+  </footer>
+</div>
+    <%= javascript_include_tag 'project', 'data-turbolinks-track' => true %>
   </body>
 </html>
