@@ -79,19 +79,22 @@
 
                             <%= image_tag "portfolio/full/item6.png" , class: "img-responsive" %>
 
-                            <div class="overlay">
+                            <div class="overlay text-center">
                                 <div class="recent-work-inner">
                                     <h3>
 
                                         <%= link_to event.name, event_path(code: event.code)%>
 
                                     </h3>
-                                    <br>
+                                   
+                                <!--
+                                 <br>   
                                     <p>
 
                                         <%=event.description.first(180) + " (...)" %>
 
                                     </p> 
+                                -->    
                                 </div> 
                             </div>
                         </div>

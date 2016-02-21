@@ -12,6 +12,7 @@
   <body>
     
       <%= render 'layouts/messages' %>
+        
 
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #fff;">
       <div class="container">
@@ -22,24 +23,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <a class="navbar-brand" href="#">
-               <%= yield :name %>
-            </a>
-            <p class="navbar-text"><span class="fa fa-group"></span> <%= yield :team %></p>
+          
+          <%= link_to (root_path), class: "navbar-brand" do %>
+            <%= image_tag 'logo.png', height: 50 %>
+          <% end %>
+
+
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
-
+              <li><a><span class="fa fa-heartbeat"></span><%= yield :name %></a></li>
+              <li><a><span class="fa fa-group"></span><%= yield :team %></a></li>
+          
             </ul>          
           
           <ul class="nav navbar-nav navbar-right">
               <li><a href="#problema">Problema</a></li>
               <li><a href="#solucao">Solução</a></li>
               <li><a href="#equipe">Equipe</a></li>
-            <form class="navbar-form navbar-right" role="search">
-            <button type="submit" class="btn btn-default">Contato</button>
-          </form>
+              <li><p class="navbar-btn text-center"><a href="#" class="btn btn-default">Contato</a></p></li>
           </ul>
 
 

@@ -31,19 +31,23 @@
 
                             <%= image_tag "portfolio/full/item6.png" , class: "img-responsive" %>
 
-                            <div class="overlay" style="background: rgb(0, 102, 177)">
+                            <div class="overlay text-center" style="background: rgb(0, 102, 177)">
                                 <div class="recent-work-inner">
                                     <h3>
 
                                         <%= link_to project.name, project_path(code: @event, project_name: project.name.parameterize)%>
 
                                     </h3>
+                                    
+                           <!--
                                     <br>
                                     <p>
 
                                         <%=project.description.first(180) + " (...)" %>
 
                                     </p> 
+                          -->
+
                                 </div> 
                             </div>
                         </div>
