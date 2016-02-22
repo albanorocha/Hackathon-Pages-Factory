@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row centered">
+      <h2><strong>Usuário: </strong>
+  <%= @event_user.user.name %></h2>
+      <hr>
+   </div>
 
+<div class="row col-lg-4 col-lg-offset-4">
 <p>
-  <strong>Usuário: </strong>
-  <%= @event_user.user.name %>
-</p>
-
-<p>
-  <strong>Role:</strong>
+  <strong>Tipo:</strong>
   <%= @event_user.role %>
 </p>
 
-<%= link_to 'Edit', edit_admin_event_user_path(@event_user, :code => @event.code) %> |
-<%= link_to 'Back', admin_event_users_path(:code => @event.code) %>
+<%= link_to 'Editar', edit_admin_event_user_path(@event_user, :code => @event.code), class: "btn btn-primary" %>
+</div>
+
+</div>

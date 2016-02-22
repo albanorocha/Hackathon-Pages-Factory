@@ -2,23 +2,23 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
+    <%= f.input :name, label: "Nome" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :email %>
+    <%= f.input :email, label: "Email" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :password %>
+    <%= f.input :password, label: "Senha" %>
   </div>
 
   <div class="form-inputs">
     <%= f.input :role, :collection => User.roles, :label_method => :first,
-        :value_method => :first , :label => "Role" ,:include_blank => false %>
+        :value_method => :first , :label => "Permissão" ,:include_blank => false %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, value: "Enviar", class: "btn btn-primary btn-lg btn-block" %>
   </div>
 <% end %>

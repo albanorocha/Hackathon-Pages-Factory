@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row centered">
+      <h2> <%= link_to new_admin_event_team_path do %> 
+        <i class="fa fa-plus-circle"></i> Projeto
+      <% end %>
+      </h2>
+      <hr>
+    <h3>Projeto(os): <b><%= @team.name %> </b></h3>
+   </div>
+<div class="row col-lg-10 col-lg-offset-1">
 
-<h1>Listing <b><%= @team.name %> </b> Projects</h1>
 
 <% @projects.each do |project| %>
-  <h2> <b> <%= project.name %> </b> </h2>
+  <h3> <b> <%= project.name %> </b> </h3>
   <h3> Why </h3>
   <p><%= project.why %> </p>
   <h3> How </h3>
@@ -16,12 +24,9 @@
   <%= link_to 'Edit', edit_admin_event_team_project_path(project,
             code: @event.code, event_team_id: @team) %> |
   <%= link_to 'Destroy', admin_event_team_project_path(project, code: @event.code,
-          event_team_id: @team), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<br>
-<br>
+          event_team_id: @team), method: :delete, data: { confirm: 'Tem certeza?' } %>
 <% end %>
 
-<br>
+</div>
 
-<%= link_to 'New Project', new_admin_event_team_project_path %>
+</div>

@@ -37,8 +37,7 @@ class Admin::TeamUsersController < Admin::AdminController
 
     respond_to do |format|
       if @team_user.save
-        format.html { redirect_to admin_event_team_user_path(@team_user,
-          event_team_id: @team_user.team, code: @event.code),
+        format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
           notice: 'Team user was successfully created.' }
         format.json { render :show, status: :created, location: @team_user }
       else
@@ -53,8 +52,7 @@ class Admin::TeamUsersController < Admin::AdminController
   def update
     respond_to do |format|
       if @team_user.update(team_user_params)
-        format.html { redirect_to admin_event_team_user_path(@team_user,
-          event_team_id: @team_user.team, code: @event.code),
+        format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
           notice: 'Team user was successfully updated.' }
         format.json { render :show, status: :ok, location: @team_user }
       else

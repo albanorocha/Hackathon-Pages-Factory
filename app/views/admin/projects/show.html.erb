@@ -1,6 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row centered">
+      <h2><%= @project.name %>
+      </h2>
+      <hr>
+   </div>
+   </div>
 
-<h2> <b> <%= @project.name %> </b> </h2>
+<div class="row col-lg-10 col-lg-offset-1 table-responsive">
+
 <h3> Why </h3>
 <p><%= @project.why %> </p>
 <h3> How </h3>
@@ -8,9 +15,5 @@
 <h3> What </h3>
 <p><%= @project.what %> </p>
 
-<br>
-
-<%= link_to 'Edit', edit_admin_event_team_project_path(@project, :code => @event.code,
-    :event_team_id => @team)  %> |
-<%= link_to 'Back', admin_event_team_projects_path(:code => @event.code,
-    :event_team_id => @team) %>
+</div>
+</div>
