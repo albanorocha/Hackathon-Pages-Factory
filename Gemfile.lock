@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: a2c93fe1a9d3a3f60d1662e5ec34fdba7bf2b304
+  specs:
+    carrierwave (0.10.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -194,6 +203,10 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    simple_form_fancy_uploads (0.2.0)
+      carrierwave
+      rails (>= 4.0.0)
+      simple_form (~> 3.1)
     spring (1.6.3)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -234,6 +247,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara
+  carrierwave!
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
@@ -254,6 +268,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   simple_form
+  simple_form_fancy_uploads
   spring
   spring-commands-rspec
   therubyracer

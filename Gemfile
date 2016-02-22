@@ -22,6 +22,8 @@ gem 'pg'
 gem 'pundit'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'simple_form_fancy_uploads'
 group :development do
   gem 'better_errors'
   gem 'rails_layout'

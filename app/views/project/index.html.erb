@@ -7,7 +7,7 @@
 <% end %>
 
 <% content_for :team do %>
-  <%= @project.name %>
+  <%= @project.team.name %>
 <% end %>
 
 
@@ -16,14 +16,14 @@
 <% end %>
 
 <% content_for :why do %>
-  <%= @project.why %>
+  <%= @project.problem %>
 <% end %>
 
 <% content_for :how do %>
-  <%= @project.how %>
+  <%= @project.solution %>
 <% end %>
 
 <% content_for :what do %>
-  <%= @project.what %>
+  <%= @project.team %>
 <% end %>
 

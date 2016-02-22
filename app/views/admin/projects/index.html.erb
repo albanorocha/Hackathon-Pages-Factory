@@ -5,11 +5,11 @@
 <% @projects.each do |project| %>
   <h2> <b> <%= project.name %> </b> </h2>
   <h3> Why </h3>
-  <p><%= project.why %> </p>
+  <p><%= project.problem %> </p>
   <h3> How </h3>
-  <p><%= project.how %> </p>
+  <p><%= project.solution %> </p>
   <h3> What </h3>
-  <p><%= project.what %> </p>
+  <p><%= project.team_description %> </p>
 
   <%= link_to 'Show', admin_event_team_project_path(project,
             code: @event.code, event_team_id: @team) %> |

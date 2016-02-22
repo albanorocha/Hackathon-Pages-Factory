@@ -22,7 +22,7 @@
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-toggle="tooltip" data-placement="right" title="Toggle Navigation"></div>
               </div>
-            <!--logo start-->           
+            <!--logo start-->
             <%=link_to (admin_root_path) , class: "logo" do %>
               <b>MedHacker</b>
             <% end %>
@@ -86,6 +86,13 @@
                     <% end %>
                   </li>
 
+                  <li class="">
+                     <%= link_to(admin_home_configuration_path) do %>
+                         <i class="fa fa-cogs"></i>
+                         <span>Home Configuration</span>
+                     <% end %>
+                  </li>
+
 
               </ul>
               <!-- sidebar menu end-->
@@ -120,7 +127,7 @@
           </div>
       </footer>
       <!--footer end-->
-  
+
 
    <%= javascript_include_tag 'administrator', 'data-turbolinks-track' => true %>
 

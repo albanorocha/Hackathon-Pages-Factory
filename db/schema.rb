@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217212526) do
+ActiveRecord::Schema.define(version: 20160221200106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,26 +33,57 @@ ActiveRecord::Schema.define(version: 20160217212526) do
     t.date     "date"
     t.string   "address"
     t.text     "description"
-    t.string   "image"
     t.boolean  "release_sign_up"
     t.boolean  "published"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
+  create_table "home_configurations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "image"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
-    t.string   "image"
-    t.text     "why"
-    t.text     "how"
-    t.text     "what"
     t.text     "description"
+    t.text     "problem"
+    t.string   "problem_image"
+    t.text     "solution"
+    t.string   "solution_image"
+    t.text     "team_description"
+    t.string   "team_image"
+    t.string   "facebook_link"
+    t.string   "instagram_link"
+    t.string   "youtube_link"
+    t.string   "email"
     t.integer  "team_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "projects", ["team_id"], name: "index_projects_on_team_id", using: :btree
+
+  create_table "sliders", force: :cascade do |t|
+    t.string   "title"
+    t.string   "link"
+    t.text     "description"
+    t.boolean  "is_title_link"
+    t.integer  "sliderable_id"
+    t.string   "sliderable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "sliders", ["sliderable_type", "sliderable_id"], name: "index_sliders_on_sliderable_type_and_sliderable_id", using: :btree
 
   create_table "team_users", force: :cascade do |t|
     t.integer  "role"

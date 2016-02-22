@@ -25,11 +25,12 @@
   <%= @event.description %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @event.image %>
-</p>
-
+<% if !@event.image.nil? %>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @event.image.image.url, size: "100" %>
+  </p>
+<% end %>
 <p>
   <strong>Release sign up:</strong>
   <%= @event.release_sign_up %>

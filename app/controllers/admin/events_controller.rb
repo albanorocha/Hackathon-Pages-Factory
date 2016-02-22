@@ -15,10 +15,14 @@ class Admin::EventsController < Admin::AdminController
   # GET /events/new
   def new
     @event = Event.new
+    @event.build_image
   end
 
   # GET /events/1/edit
   def edit
+    if @event.image.nil?
+      @event.build_image
+    end
   end
 
 
@@ -27,15 +31,14 @@ class Admin::EventsController < Admin::AdminController
   def create
     @event = Event.new(event_params)
     @event.code.upcase!
+    @event.event
 
-    @event_user = EventUser.new
-    @event_user.user = current_user
-    @event_user.event = @event
-    @event_user.role = 1
+    user = @event.event_users.build
+    user.user = current_user
+    user.role = 1
 
     respond_to do |format|
       if @event.save
-        @event_user.save
         format.html { redirect_to [:admin, @event], notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: [:admin, @event] }
       else
@@ -51,7 +54,6 @@ class Admin::EventsController < Admin::AdminController
     respond_to do |format|
       if @event.update(event_params)
         @event.code.upcase!
-        @event_user.save
         format.html { redirect_to [:admin, @event], notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: [:admin, @event] }
       else
@@ -79,6 +81,7 @@ class Admin::EventsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:code, :name, :date, :address, :description, :image, :release_sign_up, :published)
+      params.require(:event).permit(:code, :name, :date, :address, :description,
+        :release_sign_up, :published, image_attributes: [:image])
     end
 end

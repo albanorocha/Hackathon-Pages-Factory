@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h2> <b> <%= @project.name %> </b> </h2>
-<h3> Why </h3>
-<p><%= @project.why %> </p>
-<h3> How </h3>
-<p><%= @project.how %> </p>
-<h3> What </h3>
-<p><%= @project.what %> </p>
+<h3> Problema </h3>
+<p><%= @project.problem %> </p>
+<%= image_tag @project.images[0].image.url, size: "100" if !@project.images[0].nil?  %>
+<h3> Solução </h3>
+<p><%= @project.solution %> </p>
+<%= image_tag @project.images[1].image.url, size: "100" if !@project.images[1].nil? %>
+<h3> Team Description </h3>
+<p><%= @project.team_description %> </p>
+<%= image_tag @project.images[2].image.url, size: "100" if !@project.images[2].nil? %>
 
 <br>
 

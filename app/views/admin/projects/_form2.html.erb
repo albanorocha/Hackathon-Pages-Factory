@@ -11,20 +11,56 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :image %>
+    <%= f.input :problem %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :why %>
+    <%= f.input :solution %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :how %>
+    <%= f.input :team_description %>
   </div>
 
+  <h2>Project Images</h2>
+  <%= f.simple_fields_for :images do |i| %>
+    <h3>Image x</h3>
+    <div class="form-inputs">
+      <%= i.input :image, as: :image_preview %>
+    </div>
+  <% end %>
+
   <div class="form-inputs">
-    <%= f.input :what %>
+    <%= f.input :facebook_link %>
   </div>
+  <div class="form-inputs">
+    <%= f.input :youtube_link %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :instagram_link %>
+  </div>
+
+  <h2>Project Sliders</h2>
+  <%= f.simple_fields_for :sliders do |s| %>
+    <h3>Slider x</h3>
+    <%= s.simple_fields_for :image do |i| %>
+      <div class="form-inputs">
+        <%= i.input :image, as: :image_preview%>
+      </div>
+    <% end %>
+
+    <div class="form-inputs">
+      <%= s.input :title %>
+    </div>
+
+    <div class="form-inputs">
+      <%= s.input :description %>
+    </div>
+
+    <div class="form-inputs">
+      <%= s.input :is_title_link %>
+    </div>
+  <% end %>
 
   <div class="form-actions">
     <%= f.button :submit %>

@@ -1,0 +1,29 @@
+<%= simple_form_for([:admin, @home_configuration], url: admin_home_configuration_path) do |f| %>
+  <%= f.error_notification %>
+
+  <h2> Sliders</h2>
+  <%= f.simple_fields_for :sliders do |s| %>
+    <h3>Slider x</h3>
+    <%= s.simple_fields_for :image do |i| %>
+      <div class="form-inputs">
+        <%= i.input :image, as: :image_preview%>
+      </div>
+    <% end %>
+
+    <div class="form-inputs">
+      <%= s.input :title %>
+    </div>
+
+    <div class="form-inputs">
+      <%= s.input :description %>
+    </div>
+
+    <div class="form-inputs">
+      <%= s.input :is_title_link %>
+    </div>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

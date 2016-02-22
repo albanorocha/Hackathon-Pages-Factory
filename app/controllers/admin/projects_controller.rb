@@ -22,12 +22,16 @@ class Admin::ProjectsController < Admin::AdminController
 
   # GET /admin/projects/1/edit
   def edit
+    @project.images.order('image DESC')
   end
 
   # POST /admin/projects
   # POST /admin/projects.json
   def create
     @project = Project.new(project_params)
+    @project.create_images
+    @project.create_slides
+
     @project.team = @team
     @project.name.upcase!
 
@@ -48,7 +52,7 @@ class Admin::ProjectsController < Admin::AdminController
   def update
     @project.name.upcase!
     respond_to do |format|
-      if @project.update(project_params)
+      if @project.update_attributes(project_params)
         format.html { redirect_to admin_event_team_projects_path(:code => @event.code,
           :event_team_id => @team), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
@@ -86,6 +90,9 @@ class Admin::ProjectsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :image, :why, :how, :what, :description)
+      params.require(:project).permit(:id, :name, :description, :problem, :solution, :team_description,
+        :facebook_link, :instagram_link, :youtube_link,
+        sliders_attributes: [:id, :title, :link, :description, :is_title_link,
+          image_attributes: [:id, :image]], images_attributes: [:id, :image] )
     end
 end

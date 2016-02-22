@@ -22,9 +22,11 @@
       <%= f.input :description %>
     </div>
 
-    <div class="form-inputs">
-      <%= f.input :image %>
-    </div>
+    <%= f.simple_fields_for :image do |i| %>
+      <div class="form-inputs">
+        <%= i.input :image, as: :image_preview %>
+      </div>
+    <% end %>
 
     <div class="form-inputs">
       <%= f.input :release_sign_up %>

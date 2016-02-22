@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
     resources :users
 
+    get 'home_configuration', to: 'home_configuration#index'
+
+    patch 'home_configuration', to: 'home_configuration#update'
+    put 'home_configuration', to: 'home_configuration#update'
+
     resources :events, param: :code do
       member do
         resources :event_users, :path => 'users'

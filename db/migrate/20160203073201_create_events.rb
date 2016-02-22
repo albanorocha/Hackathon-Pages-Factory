@@ -6,7 +6,6 @@ class CreateEvents < ActiveRecord::Migration
       t.date :date
       t.string :address
       t.text :description
-      t.string :image
       t.boolean :release_sign_up
       t.boolean :published
 
