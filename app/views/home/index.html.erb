@@ -7,40 +7,28 @@
     </ol>
     <div class="carousel-inner" role="listbox">
 
-        <% @events.each.with_index do |event, index| %>
+        <% @sliders.each.with_index do |slider, index| %>
             <!--DESTAQUE -->
             <% if index == 0 %>
-            <div class="item active">
-
-                <%= image_tag("portfolio/full/item3.png") %>
+                <div class="item active">
+            <% else %>
+                <div class="item">
+            <% end %>
+                <%= image_tag slider.image.image.url %>
 
                 <div class="container">
                     <div class="carousel-caption">
-
-                        <h1> <%= link_to event.name, event_path(code: event.code)%></h1>
-
-                        <p><%=event.description.first(180) + " (...)" %></p>
-
+                        <% if slider.link.blank? %>
+                            <h1> <%=slider.title%> </h1>
+                        <% else %>
+                            <h1> <%= link_to slider.title, slider.link %></h1>
+                        <% end %>
+                        <% if !slider.description.blank? %>
+                            <p> <%=slider.description.first(180) + " (...)" %></p>
+                        <%end%>
                     </div>
                 </div>
             </div>
-         <%else if index < 3%>   
-        <div class="item">
-
-            <%= image_tag("portfolio/full/item3.png") %>
-
-            <div class="container">
-                <div class="carousel-caption">
-
-                    <h1> <%= link_to event.name, event_path(code: event.code)%></h1>
-
-                    <p><%=event.description.first(180) + " (...)" %></p>
-
-                </div>
-            </div>
-        </div>
-            <%end%>
-            <%end%>
         <%end%>
 
     </div>
@@ -56,52 +44,51 @@
 </div><!-- /.carousel -->
 
 
-
-
 <div class="container">
     <div class="row text-center">
         <br>
         <h2>Últimos Eventos</h2>
         <hr>
-        <p class="lead">Nossa missão é contagiar e esinar as pessoas sobre saúde e empreendedorismo . Apresentamos estratégias e caminhos para juntos resolvermos problemas de saúde globalmente. </p>
     </div>
 
 
     <section id="portfolio">
-        <div class="container">
-            <div class="row">
+        <div class="row">
 
-                <% @events.each do |event| %>
+            <% @events.each do |event| %>
 
-                <div class="portfolio-items">
-                    <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4"> 
-                        <div class="recent-work-wrap">
+            <div class="portfolio-items">
+                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
+                    <div class="recent-work-wrap">
 
-                            <%= image_tag "portfolio/full/item6.png" , class: "img-responsive" %>
+                        <%= image_tag event.image.image.url , class: "img-responsive" %>
 
-                            <div class="overlay">
-                                <div class="recent-work-inner">
-                                    <h3>
+                        <div class="overlay text-center">
+                            <div class="recent-work-inner">
+                                <h3>
 
-                                        <%= link_to event.name, event_path(code: event.code)%>
+                                    <%= link_to event.name, event_path(code: event.code)%>
 
-                                    </h3>
-                                    <br>
-                                    <p>
+                                </h3>
 
-                                        <%=event.description.first(180) + " (...)" %>
+                            <!--
+                             <br>
+                                <p>
 
-                                    </p> 
-                                </div> 
+                                    <%=event.description.first(180) + " (...)" %>
+
+                                </p>
+                            -->
                             </div>
                         </div>
-                    </div><!--/.portfolio-item-->
-                    <%end%>
+                    </div>
+                </div><!--/.portfolio-item-->
+                <%end%>
 
-                </div>
             </div>
-        </section><!--/#portfolio-item-->
-    </div>
+        </div>
+    </section><!--/#portfolio-item-->
+</div>
 
 <hr class="featurette-divider">
 
@@ -110,6 +97,9 @@
         <br>
         <h2>Conheça e acompanhe o MedHacker</h2>
         <hr>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d32658099.57368591!2d-34.09407122922558!3d2.307032346419111!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbr!4v1455871831351" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+
     </div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d32658099.57368591!2d-34.09407122922558!3d2.307032346419111!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbr!4v1455871831351" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
+
+

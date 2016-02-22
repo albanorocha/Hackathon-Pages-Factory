@@ -1,50 +1,48 @@
-<!--
-<h1><b><%=@event.code %></b>  <%= @event.name %></h1>
-<p><%= @event.description %></p>
-
-<% @projects.each do |project| %>
-  <h3> <%= link_to project.name, project_path(code: @event, project_name: project.name.parameterize) %> </h3>
-  <p> <%= project.description %> </p>
-<%end%>
--->
-
-
 <div class="container">
 <div class="row text-center">
    <br>
    <h2><%=@event.code %> - <b> <%= @event.name %></b> </h2>
    <hr>
+   <%= image_tag @event.image.image.url , class: "img-responsive", size: "500" %>
    <p class="lead"><%= @event.description %></p>
 </div>
 
 
+<div class="row text-center">
+   <br>
+   <h2> Projetos </h2>
+   <hr>
+</div>
 
 <section id="portfolio">
-        <div class="container">
-            <div class="row">
+       <div class="row">
 
 				<% @projects.each do |project| %>
 
                 <div class="portfolio-items">
-                    <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4"> 
+                    <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
                         <div class="recent-work-wrap">
 
-                            <%= image_tag "portfolio/full/item6.png" , class: "img-responsive" %>
+                           <%= image_tag project.images[1].image.url , class: "img-responsive" %>
 
-                            <div class="overlay" style="background: rgb(0, 102, 177)">
+                            <div class="overlay text-center" style="background: rgb(0, 102, 177)">
                                 <div class="recent-work-inner">
                                     <h3>
 
                                         <%= link_to project.name, project_path(code: @event, project_name: project.name.parameterize)%>
 
                                     </h3>
+
+                           <!--
                                     <br>
                                     <p>
 
                                         <%=project.description.first(180) + " (...)" %>
 
-                                    </p> 
-                                </div> 
+                                    </p>
+                          -->
+
+                                </div>
                             </div>
                         </div>
                     </div><!--/.portfolio-item-->

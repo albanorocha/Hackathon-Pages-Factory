@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
   <body>
-    
+
       <%= render 'layouts/messages' %>
+
 
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #fff;">
       <div class="container">
@@ -22,24 +23,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <a class="navbar-brand" href="#">
-               <%= yield :name %>
-            </a>
-            <p class="navbar-text"><span class="fa fa-group"></span> <%= yield :team %></p>
+
+          <%= link_to (root_path), class: "navbar-brand" do %>
+            <%= image_tag 'logo.png', height: 50 %>
+          <% end %>
+
+
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
+              <li><a><span class="fa fa-heartbeat"></span><%= yield :name %></a></li>
+              <li><a><span class="fa fa-group"></span><%= yield :team %></a></li>
 
-            </ul>          
-          
+            </ul>
+
           <ul class="nav navbar-nav navbar-right">
               <li><a href="#problema">Problema</a></li>
               <li><a href="#solucao">Solução</a></li>
               <li><a href="#equipe">Equipe</a></li>
-            <form class="navbar-form navbar-right" role="search">
-            <button type="submit" class="btn btn-default">Contato</button>
-          </form>
+              <li><p class="navbar-btn text-center"><%= yield :contato %></p></li>
           </ul>
 
 
@@ -52,77 +55,8 @@
 
    <!-- Carousel
 ================================================== -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner" role="listbox">
-
-    <div class="item active">
-      
-          <%= image_tag("video_bg.jpg")%>
-      
-      <div class="container">
-      
-        <div class="carousel-caption">
-      
-          <h1>Example headline.</h1>
-      
-          <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-          
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-
-        </div>
-      </div>
-    </div>
-
-
-    <div class="item">
-      
-          <%= image_tag("photo.jpg") %>
-      
-      <div class="container">
-        <div class="carousel-caption">
-          
-          <h1>Another example headline.</h1>
-          
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          
-        </div>
-      </div>
-    </div>
-
-
-    <div class="item">
-      
-          <%= image_tag("blog-bg.jpg") %>
-
-      <div class="container">
-        <div class="carousel-caption">
-        
-          <h1>One more for good measure.</h1>
-
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="fa icon-prev" aria-hidden="true"></span>
-    <span class="sr-only"></span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="fa icon-next" aria-hidden="true"></span>
-    <span class="sr-only"></span>
-  </a>
-</div><!-- /.carousel -->
+<%= yield :carousel %>
+<!-- /.carousel -->
 
 
 <!-- Marketing messaging and featurettes
@@ -136,10 +70,10 @@
   <div id="problema" class="row featurette">
     <div class="col-md-7">
       <h2 class="featurette-heading">Qual o problema?</h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <p class="lead"> <%= yield :problem %> </p>
     </div>
     <div class="col-md-5">
-      <%= image_tag("machine.png", class: "featurette-image img-responsive center-block img-thumbnail") %>
+      <%= yield :image_problem %>
     </div>
   </div>
 
@@ -148,10 +82,10 @@
   <div id="solucao" class="row featurette">
     <div class="col-md-7 col-md-push-5">
       <h2 class="featurette-heading">Qual a solução?</h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <p class="lead"> <%= yield :solution %></p>
     </div>
     <div class="col-md-5 col-md-pull-7">
-      <%= image_tag("work.png", class: "featurette-image img-responsive center-block img-thumbnail") %>
+      <%= yield :image_solution %>
     </div>
   </div>
 
@@ -160,10 +94,10 @@
   <div id="equipe" class="row featurette">
     <div class="col-md-7">
       <h2 class="featurette-heading">Quem é a equipe?</h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <p class="lead"> <%= yield :team_description %></p>
     </div>
     <div class="col-md-5">
-      <%= image_tag("team.jpg", class: "featurette-image img-responsive center-block img-thumbnail") %>
+      <%= yield :image_team %>
     </div>
   </div>
 
@@ -177,9 +111,7 @@
 <footer>
 <div class="container text-center">
     <p class="pull-center">
-        <a href="#"><i class="fa fa-facebook-official fa-3x"></i></a> &nbsp;&nbsp;&nbsp;
-        <a href="#"><i class="fa fa-instagram fa-3x"></i></a> &nbsp;&nbsp;&nbsp;
-        <a href="#"><i class="fa fa-youtube fa-3x"></i></a>    
+        <%= yield :networks %>
     </p>
     <br>
     <p>&copy; Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados</p>

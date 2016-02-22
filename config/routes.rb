@@ -5,13 +5,13 @@ Rails.application.routes.draw do
 
   get 'events/:code', to: 'events#show', :as => 'event'
 
-  get 'events/projects', to: 'events#projects', :as => 'events_projects'
+  get 'projects', to: 'events#projects', :as => 'events_projects'
 
   get 'events/:code/:project_name', to: 'project#index', :as => 'project'
 
 
   namespace :admin do
-    root to: 'dashboard#index'
+    root to: 'events#index'
 
     resources :users
 

@@ -1,8 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row centered">
+      <h2> <%= link_to new_admin_event_user_path do %> 
+        <i class="fa fa-plus-circle"></i> Novo Participante
+      <% end %>
+      </h2>
+      <hr>
+   </div>
 
-<h1>Listing Admin Event Users</h1>
+<div class="row col-lg-6 col-lg-offset-3 table-responsive">
 
-<table class="table table-bordered">
+<table class="table table-hover", style="background:#fff">
   <thead>
     <tr>
       <th>Usuario</th>
@@ -16,16 +23,32 @@
       <tr>
         <td><%= event_user.user.email %></td>
         <td><%= event_user.role %></td>
-        <td><%= link_to 'Show', admin_event_user_path(event_user, :code => @event.code) %></td>
-        <td><%= link_to 'Edit', edit_admin_event_user_path(event_user, :code => @event.code) %></td>
-        <td><%= link_to 'Destroy', admin_event_user_path(event_user, :code => @event.code), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--
+        <td>
+          <%= link_to  admin_event_user_path(event_user, :code => @event.code) do %> 
+            <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+-->
+        <td>
+          <%= link_to edit_admin_event_user_path(event_user, :code => @event.code) do %> 
+            <i class="fa fa-pencil"></i>
+          <% end %>
+        </td>        
+        <td>
+          <%= link_to admin_event_user_path(event_user, :code => @event.code), method: :delete, data: { confirm: 'Tem certeza?' } do %> 
+            <i class="fa fa-trash-o"></i>
+        <% end %>          
+        </td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
+<p class="pull-right">
+<%= link_to 'Evento', admin_event_path(@event.code) , class: "btn btn-primary" %>
+</p>
+</div>
+</div>
 
-<br>
-
-<%= link_to 'Back', [:admin, @event] %> |
-
-<%= link_to 'New Event user', new_admin_event_user_path %>
+</div>

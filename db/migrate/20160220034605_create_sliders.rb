@@ -4,7 +4,6 @@ class CreateSliders < ActiveRecord::Migration
       t.string :title
       t.string :link
       t.text :description
-      t.boolean :is_title_link
 
       t.references :sliderable, polymorphic: true, index: true
 

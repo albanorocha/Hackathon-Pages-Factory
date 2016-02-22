@@ -1,10 +1,11 @@
 class HomeController < ApplicationController
   def index
-
-  		@events = Event.all
+    @home_configuration = HomeConfiguration.first
+    @sliders = @home_configuration.sliders
+  	@events = Event.all
   end
 
-   
+
 
     def show
   #    @projects = Project.all(:team).where(event_id: @event)

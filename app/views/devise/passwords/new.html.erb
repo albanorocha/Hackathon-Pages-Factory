@@ -1,12 +1,26 @@
+<div class = "container">
+  <div class="row col-md-4">  
+</div>
+  <div class="row col-md-4">
+   <br>
+   <h3>Esqueceu sua senha?</h3>
+   <p>Enviaremos as instruções para seu email.</p>
+    <hr>
+
 <div class="authform">
-  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>
-    <h3>Forgot your password?</h3>
-    <p>We'll send password reset instructions.</p>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>   
     <%= devise_error_messages! %>
     <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+      <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: "Email" %>
     </div>
-     <%= f.submit 'Reset Password', :class => 'button right' %>
+     <%= f.submit 'Solicitar nova senha', :class => 'button right btn btn-lg btn-primary btn-block' %>
   <% end %>
+</div>
+
+
+
+</div>
+  <div class="row col-md-4">  
+</div>
+
 </div>

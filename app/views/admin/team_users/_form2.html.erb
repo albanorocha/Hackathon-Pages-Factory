@@ -2,15 +2,12 @@
           event_team_id: @team_user.team, code: @event.code)) do |f| %>
   <%= f.error_notification %>
 
-  <h3> <%= @team_user.user.name %> </h3>
-
   <div class="form-inputs">
     <%= f.input :role, :collection => TeamUser.roles, :label_method => :first,
-        :value_method => :first , :label => "Role" ,:include_blank => false %>
+        :value_method => :first , :label => "Tipo" ,:include_blank => false %>
   </div>
 
-
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, value: "Enviar", class: "btn btn-primary btn-lg btn-block" %>
   </div>
 <% end %>

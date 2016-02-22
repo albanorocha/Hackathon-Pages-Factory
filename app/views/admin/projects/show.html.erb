@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row centered">
+      <h2><%= @project.name %>
+      </h2>
+      <hr>
+   </div>
+   </div>
+
+<div class="row col-lg-10 col-lg-offset-1 table-responsive">
 
 <h2> <b> <%= @project.name %> </b> </h2>
 <h3> Problema </h3>
 <p><%= @project.problem %> </p>
 <%= image_tag @project.images[0].image.url, size: "100" if !@project.images[0].nil?  %>
+
 <h3> Solução </h3>
 <p><%= @project.solution %> </p>
 <%= image_tag @project.images[1].image.url, size: "100" if !@project.images[1].nil? %>
+
 <h3> Team Description </h3>
 <p><%= @project.team_description %> </p>
 <%= image_tag @project.images[2].image.url, size: "100" if !@project.images[2].nil? %>
 
-<br>
-
-<%= link_to 'Edit', edit_admin_event_team_project_path(@project, :code => @event.code,
-    :event_team_id => @team)  %> |
-<%= link_to 'Back', admin_event_team_projects_path(:code => @event.code,
-    :event_team_id => @team) %>
+<p> <%= link_to "Editar", :action => "edit" %> </p>
+</div>
+</div>

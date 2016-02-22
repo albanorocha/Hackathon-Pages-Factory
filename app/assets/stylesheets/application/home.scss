@@ -10,15 +10,19 @@ body {
   min-height: 2000px;
   padding-top: 50px;
 }
+
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
 .navbar-brand {
     
     padding: 0px 15px;
 
 }
 
-/* CUSTOMIZE THE NAVBAR
--------------------------------------------------- */
-
+.alert {
+    margin-top: 20px;
+  }
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -44,6 +48,16 @@ body {
   left: 0;
   min-width: 100%;
   height: 500px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #fff;
+    text-decoration: underline;
 }
 
 

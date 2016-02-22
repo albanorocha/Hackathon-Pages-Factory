@@ -1,8 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row centered">
+      <h2> <%= link_to new_admin_event_team_path do %> 
+        <i class="fa fa-plus-circle"></i> Equipe
+      <% end %>
+      </h2>
+      <hr>
+   </div>
 
-<h1>Listing Teams</h1>
+<div class="row col-lg-5 col-lg-offset-3 table-responsive">
 
-<table class="table table-bordered">
+<table class="table table-hover", style="background:#fff">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,14 +21,26 @@
     <% @teams.each do |team| %>
       <tr>
         <td><%= team.name %></td>
-        <td><%= link_to 'Show', admin_event_team_path(team, :code => @event.code) %></td>
-        <td><%= link_to 'Edit', edit_admin_event_team_path(team, :code => @event.code) %></td>
-        <td><%= link_to 'Destroy', admin_event_team_path(team, :code => @event.code), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <%= link_to admin_event_team_path(team, :code => @event.code) do %> 
+            <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_admin_event_team_path(team, :code => @event.code) do %> 
+            <i class="fa fa-pencil"></i>
+          <% end %>
+        </td>        
+        <td>
+          <%= link_to admin_event_team_path(team, :code => @event.code), method: :delete, data: { confirm: 'Tem certeza?' } do %> 
+            <i class="fa fa-trash-o"></i>
+        <% end %>          
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
-
-<%= link_to 'New Team', new_admin_event_team_path %>
+</div>

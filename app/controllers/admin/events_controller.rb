@@ -31,7 +31,6 @@ class Admin::EventsController < Admin::AdminController
   def create
     @event = Event.new(event_params)
     @event.code.upcase!
-    @event.event
 
     user = @event.event_users.build
     user.user = current_user

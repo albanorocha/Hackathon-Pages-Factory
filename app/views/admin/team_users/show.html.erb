@@ -1,18 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row centered">
+      <h2><%= @team.name %>
+      </h2>
+      <hr>
+   </div>
 
-<h1> <b><%= @team.name %> </b> </h1>
 
+<div class="row col-lg-4 col-lg-offset-4">
 <p>
-  <strong>Name: </strong>
+  <strong>Nome: </strong>
   <%= @team_user.user.name %>
 </p>
 
 <p>
-  <strong>Role: </strong>
+  <strong>Tipo: </strong>
   <%= @team_user.role %>
 </p>
 
-<%= link_to 'Edit', edit_admin_event_team_user_path(@team_user,
-          event_team_id: @team_user.team, code: @event.code) %> |
-<%= link_to 'Back', admin_event_team_users_path(event_team_id: @team_user.team,
-          code: @event.code) %>
+</div>
+</div>

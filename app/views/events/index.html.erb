@@ -9,9 +9,8 @@
 <div class="container">
 <div class="row text-center">
    <br>
-   <h2>Últimos Eventos</h2>
+   <h2> Eventos</h2>
    <hr>
-   <p class="lead">Nossa missão é contagiar e esinar as pessoas sobre saúde e empreendedorismo . Apresentamos estratégias e caminhos para juntos resolvermos problemas de saúde globalmente. </p>
 </div>
 
 
@@ -20,27 +19,29 @@
             <div class="row">
 
 <% @events.each do |event| %>
-  
+
   <div class="portfolio-items">
-      <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4"> 
+      <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
           <div class="recent-work-wrap">
-            
-                <%= image_tag "portfolio/full/item6.png" , class: "img-responsive" %>
-              
-              <div class="overlay">
+                <%= image_tag event.image.image.url , class: "img-responsive" %>
+
+              <div class="overlay text-center">
                   <div class="recent-work-inner">
                       <h3>
 
                       <%= link_to event.name, event_path(code: event.code)%>
-                      
+
                       </h3>
-                      <br>
+
+                   <!--
+                     <br>
                       <p>
-                      
+
                       <%=event.description.first(180) + " (...)" %>
 
-                      </p> 
-                  </div> 
+                      </p>
+                   -->
+                  </div>
               </div>
           </div>
       </div><!--/.portfolio-item-->

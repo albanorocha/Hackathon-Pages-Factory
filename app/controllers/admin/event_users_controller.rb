@@ -51,7 +51,7 @@ class Admin::EventUsersController < Admin::AdminController
   def update
     respond_to do |format|
       if @event_user.update(event_user_params)
-        format.html { redirect_to admin_event_user_path(@event_user, :code => @event.code),
+        format.html { redirect_to admin_event_users_url,
             notice: 'Event user was successfully updated.' }
         format.json { render :show, status: :ok, location: @event_user }
       else

@@ -6,6 +6,53 @@
   <%= @project.name %>
 <% end %>
 
+<% content_for :carousel do %>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+
+        <% @sliders.each.with_index do |slider, index| %>
+            <!--DESTAQUE -->
+            <% if index == 0 %>
+                <div class="item active">
+            <% else %>
+                <div class="item">
+            <% end %>
+                <%= image_tag slider.image.image.url %>
+
+                <div class="container">
+                    <div class="carousel-caption">
+                        <% if slider.link.blank? %>
+                            <h1> <%=slider.title%> </h1>
+                        <% else %>
+                            <h1> <%= link_to slider.title, slider.link %></h1>
+                        <% end %>
+                        <% if !slider.description.blank? %>
+                            <p> <%=slider.description.first(180) + " (...)" %></p>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        <%end%>
+
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="fa icon-prev" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="fa icon-next" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+    </a>
+  </div><!-- /.carousel -->
+<% end %>
+
 <% content_for :team do %>
   <%= @project.team.name %>
 <% end %>
@@ -15,15 +62,46 @@
   <%= @project.description %>
 <% end %>
 
-<% content_for :why do %>
+<% content_for :problem do %>
   <%= @project.problem %>
 <% end %>
 
-<% content_for :how do %>
+<% content_for :image_problem do %>
+  <%= image_tag(@project.images[0].image.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
+<% end %>
+
+<% content_for :solution do %>
   <%= @project.solution %>
 <% end %>
 
-<% content_for :what do %>
-  <%= @project.team %>
+<% content_for :image_solution do %>
+  <%= image_tag(@project.images[1].image.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
+<% end %>
+
+<% content_for :team_description do %>
+  <%= @project.team_description %>
+<% end %>
+
+<% content_for :image_team do %>
+  <%= image_tag(@project.images[2].image.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
+<% end %>
+
+<% content_for :networks do %>
+  <%= link_to @project.facebook_link, target: '_blank' do %>
+    <i class="fa fa-facebook-official fa-3x"> </i>
+  <% end %>
+
+  <%= link_to @project.instagram_link, target: '_blank' do %>
+    <i class="fa fa-instagram fa-3x"> </i>
+  <% end %>
+
+  <%= link_to @project.youtube_link, target: '_blank' do %>
+    <i class="fa fa-youtube fa-3x"> </i>
+  <% end %>
+
+<% end %>
+
+<% content_for :contato do %>
+  <%= mail_to @project.email,  "Contato", class: "btn btn-default" %>
 <% end %>
 

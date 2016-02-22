@@ -29,40 +29,54 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          
+
           <%= link_to (root_path), class: "navbar-brand" do %>
             <%= image_tag 'logo2.png', height: 50 %>
           <% end %>
-    
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+           <ul class="nav navbar-nav navbar-left">
+               <li>
+                  <%= link_to (events_path) do %>
+                    <i class="fa fa-clone"></i> Eventos
+                  <% end %>
+               </li>
+               <li>
+                  <%= link_to (events_projects_path) do %>
+                    <i class="fa fa-star"></i> Projetos
+                  <% end %>
+               </li>
+           </ul>
+
           <ul class="nav navbar-nav navbar-right">
 
-            <li><%=link_to "Eventos", events_path %>
+
             <%= render 'layouts/nav_links_for_auth' %>
-            </li>
-          
+
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    
+
     <%= render 'layouts/messages' %>
     <%= yield %>
 
 
-    <hr class="featurette-divider">
+
 
     <!-- FOOTER -->
+
 <footer>
-<div class="container text-center">
+<hr>
+<div class="container">
+  <br>
     <p class="pull-right">
-        <%= link_to (admin_root_path) do %><i class="fa fa-cog fa-2x"></i>
-        <% end %>
+      <a href="#" style="color:#000"><i class="fa fa-sort-asc fa-2x"></i></a>
     </p>
-    <br>
-    <p>&copy; Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados</p>
+    <p class="pull-left">&copy; Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados</p>
 </div>
 <hr>
 </footer>

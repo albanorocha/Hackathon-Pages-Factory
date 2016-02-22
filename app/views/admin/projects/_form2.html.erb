@@ -3,11 +3,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
+    <%= f.input :name, label: "Nome" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :description %>
+    <%= f.input :description, label: "Descrição" %>
   </div>
 
   <div class="form-inputs">
@@ -30,16 +30,6 @@
     </div>
   <% end %>
 
-  <div class="form-inputs">
-    <%= f.input :facebook_link %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :youtube_link %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :instagram_link %>
-  </div>
-
   <h2>Project Sliders</h2>
   <%= f.simple_fields_for :sliders do |s| %>
     <h3>Slider x</h3>
@@ -54,15 +44,29 @@
     </div>
 
     <div class="form-inputs">
-      <%= s.input :description %>
+      <%= s.input :link %>
     </div>
 
     <div class="form-inputs">
-      <%= s.input :is_title_link %>
+      <%= s.input :description %>
     </div>
   <% end %>
 
+  <div class="form-inputs">
+    <%= f.input :facebook_link %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :youtube_link %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :instagram_link %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :email %>
+  </div>
+
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, value: "Enviar", class: "btn btn-primary btn-lg btn-block" %>
   </div>
 <% end %>

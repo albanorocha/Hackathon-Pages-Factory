@@ -1,8 +1,13 @@
-<h1>Editing <%= @project.name %> </h1>
+<div class="container">
+  <div class="row centered">
+      <h2> Editar: <b><%= @project.name %></b> </h2>
+      <hr>
+   </div>
 
+<div class="row col-lg-10 col-lg-offset-1">
 <%= render 'form2' %>
 
-<%= link_to 'Show', admin_event_team_project_path(@project,
-            code: @event.code, event_team_id: @team) %> |
-<%= link_to 'Back', admin_event_team_projects_path(:code => @event.code,
-    :event_team_id => @team) %>
+</div>
+
+</div>
+

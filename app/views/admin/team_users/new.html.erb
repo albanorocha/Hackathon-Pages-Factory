@@ -1,5 +1,15 @@
-<h1>New <b><%= @team.name %> </b> User</h1>
-
+<div class="container">
+  <div class="row centered">
+      <h2> Novo membro da <%= @team.name %> </h2>
+      <hr>
+</div>
+<div class="row col-lg-10 col-lg-offset-1">
 <%= render 'form' %>
+<br>
+<br>
+<%= link_to 'Voltar', admin_event_team_users_path, class: "btn btn-default" %>
+<br>
+<br>
+</div>
 
-<%= link_to 'Back', admin_event_team_users_path %>
+</div>
