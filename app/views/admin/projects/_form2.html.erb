@@ -22,27 +22,35 @@
     <%= f.input :team_description %>
   </div>
 
+
   <h2>Imagens do Projeto</h2>
   <hr>
+  <div class="row col-lg-12">
   <% @project.images.each.with_index do |image,index| %>
     <%= f.simple_fields_for :images, image do |i| %>
-      <h3><%= "Image #{Project::image_type(index)}" %></h3>
-      <div class="form-inputs">
-        <%= i.input :image, as: :image_preview, input_html: {preview_version: :thumb} %>
+      <div class="row col-lg-3 col-lg-offset-1">
+      <div class="form-inputs centered">
+        <h3><%= "Image #{Project::image_type(index)}" %></h3>
+        <%= i.input :image, as: :image_preview, input_html: {preview_version: :project_thumb}, label: "< 450 x 350 >" %>
+        <%= image_tag image.image.project_thumb.url %>
+      </div>
       </div>
     <% end %>
   <% end %>
+  <br>
+</div>
 
-  <h2>Slider da Página</h2>
+  
+
+<div class="row col-lg-12" style="background:#eee">
+    <h2>Slider da Página</h2>
   <hr>
   <%= f.simple_fields_for :sliders do |s| %>
-    <h3>Slider x</h3>
-    <%= s.simple_fields_for :image do |i| %>
-      <div class="form-inputs">
-        <%= i.input :image, as: :image_preview, input_html: {preview_version: :thumb2}%>
-      </div>
-    <% end %>
 
+
+<div class="row col-lg-12">
+    <h3>Novo Slider </h3>
+    <div class="row col-lg-6 ">
     <div class="form-inputs">
       <%= s.input :title, label: "Título" %>
     </div>
@@ -54,27 +62,50 @@
     <div class="form-inputs">
       <%= s.input :description, label: "Descrição" %>
     </div>
-  <% end %>
+    </div>
 
+    <%= s.simple_fields_for :image do |i| %>
+    <div class="row col-lg-5 col-lg-offset-1 ">
+      <br>
+      <h4 class="centered">Selecione uma imagem </h4>
+      <br>
+      <br>
+      <div class="form-inputs centered">
+        <%= i.input :image, as: :image_preview, input_html: {preview_version: :slider_thumb}, label: "< 1200 x 480 >"%>
+      </div>
+      </div>
+    <% end %>
+</div>
+  <% end %>
+ </div>
+
+
+   
+  <div class="row col-lg-12">
   <h2>Social Links</h2>
   <hr>
-  <div class="form-inputs">
+  <div class="form-inputs row col-lg-3 col-lg-offset-1">
     <%= f.input :facebook_link %>
   </div>
-  <div class="form-inputs">
+  <div class="form-inputs row col-lg-3 col-lg-offset-1">
     <%= f.input :youtube_link %>
   </div>
-  <div class="form-inputs">
+  <div class="form-inputs row col-lg-3 col-lg-offset-1">
     <%= f.input :instagram_link %>
   </div>
-
-  <h2>Email de Contato</h2>
-  <hr>
-  <div class="form-inputs">
-    <%= f.input :email %>
   </div>
 
+
+  <div class="row col-lg-12">
+  <h2>Email de Contato</h2>
+  <hr>
+  <div class="form-inputs row col-lg-6">
+    <%= f.input :email %><br>
+  </div>
+</div>
+
   <div class="form-actions">
+
     <%= f.button :submit, value: "Enviar", class: "btn btn-primary btn-lg btn-block" %>
   </div>
 <% end %>
