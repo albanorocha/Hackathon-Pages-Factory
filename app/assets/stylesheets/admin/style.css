@@ -27,15 +27,13 @@ a, a:hover, a:focus {
     text-decoration: none;
     outline: none;
 }
-::selection {
 
-    background: #68dff0;
-    color: #fff;
+.table i {
+    color: #2a6496;
 }
-::-moz-selection {
-    background: #68dff0;
-    color: #fff;
-}
+
+
+
 
 #container {
     width: 100%;

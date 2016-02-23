@@ -14,36 +14,28 @@
     <% end %>
 </div>
 
-<div class="col-lg-10 col-lg-offset-1 centered">
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}" %>
-</div>
 
-
-
-
-
-<div class="col-lg-5 col-lg-offset-2">
-  <h4>Descrição do Evento</h4>
-  <p><%= @event.description %></p>
-</div>
-
-<div class="col-lg-4 col-lg-offset-1">
+<div class="col-lg-5 col-lg-offset-1">
   <h4>Detalhes do Evento</h4>
-  <p><b>Data:</b> <%= @event.date %></p>
-  <p><b>Cidade:</b> <%= @event.address %></p>
-  <p><b>Status:</b> <%= @event.published %></p>
-  <p><b>Inscrições:</b><%= @event.release_sign_up %></p>
-</div>
+    <p><b>Status:</b> <%= @event.published %>  </p>
+    <p><b>Inscrições:</b><%= @event.release_sign_up %> </p>
+      
+  <p><%= @event.description %></p>
 
-
-
-<div class="row col-lg-12">
+       <br>
     <p class="centered">
-      <br>
       <%= link_to 'Editar', edit_admin_event_path(@event), class: "btn btn-primary" %> &nbsp;
       <%= link_to 'Inscrever Participante', admin_event_users_path, class: "btn btn-info" %> &nbsp;
       <%= link_to 'Equipes', admin_event_teams_path, class: "btn btn-warning" %>
     </p>
+</div>
+
+<div class="col-lg-4 col-lg-offset-1">
+  <h4>Informações do Evento</h4>
+  <p><b>Data:</b> <%= @event.date %></p>
+  <p><b>Local:</b> <%= @event.address %></p>
+
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}",  height: "200" %>
 </div>
 
 </div>
