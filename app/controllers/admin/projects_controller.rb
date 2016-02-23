@@ -2,6 +2,7 @@ class Admin::ProjectsController < Admin::AdminController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_event
   before_action :set_team
+  add_breadcrumb "Eventos", :admin_events_path
 
 
   # GET /admin/projects
@@ -17,11 +18,21 @@ class Admin::ProjectsController < Admin::AdminController
 
   # GET /admin/projects/new
   def new
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Equipes", :admin_event_teams_path
+    add_breadcrumb "#{@team.name}", admin_event_team_path(@team, code: @event.code)
+    add_breadcrumb "New Project", :new_admin_event_team_project_path
+
     @project = Project.new
   end
 
   # GET /admin/projects/1/edit
   def edit
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Equipes", :admin_event_teams_path
+    add_breadcrumb "#{@team.name}", admin_event_team_path(@team, code: @event.code)
+    add_breadcrumb "Edit Project", :edit_admin_event_team_project_path
+
     @project.images.order('image DESC')
   end
 

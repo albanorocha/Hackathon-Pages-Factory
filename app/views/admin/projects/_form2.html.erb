@@ -32,7 +32,7 @@
       <div class="form-inputs centered">
         <h3><%= "Image #{Project::image_type(index)}" %></h3>
         <%= i.input :image, as: :image_preview, input_html: {preview_version: :project_thumb}, label: "< 450 x 350 >" %>
-        <%= image_tag image.image.project_thumb.url %>
+       
       </div>
       </div>
     <% end %>
@@ -40,7 +40,7 @@
   <br>
 </div>
 
-  
+
 
 <div class="row col-lg-12" style="background:#eee">
     <h2>Slider da Página</h2>

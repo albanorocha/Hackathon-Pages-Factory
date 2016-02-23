@@ -26,6 +26,7 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'simple_form_fancy_uploads'
 gem "mini_magick"
 gem 'geocoder'
+gem "breadcrumbs_on_rails"
 group :development do
   gem 'better_errors'
   gem 'rails_layout'

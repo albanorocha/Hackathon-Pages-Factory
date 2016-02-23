@@ -1,28 +1,42 @@
 <%= simple_form_for([:admin, @home_configuration], url: admin_home_configuration_path) do |f| %>
   <%= f.error_notification %>
 
-  <h2> Sliders</h2>
-  <%= f.simple_fields_for :sliders do |s| %>
-    <h3>Slider x</h3>
-    <%= s.simple_fields_for :image do |i| %>
+    <%= f.simple_fields_for :sliders do |s| %>
+
+
+  <div class="row col-lg-12">
+      <h3>Novo Slider </h3>
+      <div class="row col-lg-6 ">
       <div class="form-inputs">
-        <%= i.input :image, as: :image_preview%>
+        <%= s.input :title, label: "Título" %>
       </div>
+
+      <div class="form-inputs">
+        <%= s.input :link, label: "Link"  %>
+      </div>
+
+      <div class="form-inputs">
+        <%= s.input :description, label: "Descrição" %>
+      </div>
+      </div>
+
+      <%= s.simple_fields_for :image do |i| %>
+      <div class="row col-lg-5 col-lg-offset-1 ">
+        <br>
+        <h4 class="centered">Selecione uma imagem </h4>
+        <br>
+        <br>
+        <div class="form-inputs centered">
+          <%= i.input :image, as: :image_preview, input_html: {preview_version: :slider_thumb}, label: "< 1200 x 480 >"%>
+        </div>
+        </div>
+      <% end %>
+  </div>
     <% end %>
-
-    <div class="form-inputs">
-      <%= s.input :title %>
-    </div>
-
-    <div class="form-inputs">
-      <%= s.input :link %>
-    </div>
-
-    <div class="form-inputs">
-      <%= s.input :description %>
-    </div>
+  
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, value: "Enviar", class: "btn btn-primary btn-lg btn-block" %>
   </div>
 <% end %>
+

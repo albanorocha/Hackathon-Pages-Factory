@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  add_breadcrumb "Usuários", :admin_users_path
 
   # GET /admin/users
   # GET /admin/users.json
@@ -10,15 +11,18 @@ class Admin::UsersController < Admin::AdminController
   # GET /admin/users/1
   # GET /admin/users/1.json
   def show
+    add_breadcrumb "#{@user.name}", :admin_user_path
   end
 
   # GET /admin/users/new
   def new
+    add_breadcrumb "New User", :new_admin_user_path
     @user = User.new
   end
 
   # GET /admin/users/1/edit
   def edit
+    add_breadcrumb "Edit User", :edit_admin_user_path
   end
 
   # POST /admin/users

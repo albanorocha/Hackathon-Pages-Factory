@@ -23,7 +23,7 @@
             <% else %>
                 <div class="item">
             <% end %>
-                <%= image_tag slider.image.image.url %>
+                <%= image_tag slider.image.image.slider.url %>
 
                 <div class="container">
                     <div class="carousel-caption">
@@ -67,7 +67,7 @@
 <% end %>
 
 <% content_for :image_problem do %>
-  <%= image_tag(@project.images[0].image.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
+  <%= image_tag(@project.images[0].image.project.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
 <% end %>
 
 <% content_for :solution do %>
@@ -75,7 +75,7 @@
 <% end %>
 
 <% content_for :image_solution do %>
-  <%= image_tag(@project.images[1].image.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
+  <%= image_tag(@project.images[1].image.project.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
 <% end %>
 
 <% content_for :team_description do %>
@@ -83,16 +83,16 @@
 <% end %>
 
 <% content_for :image_team do %>
-  <%= image_tag(@project.images[2].image.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
+  <%= image_tag(@project.images[2].image.project.url, class: "featurette-image img-responsive center-block img-thumbnail") %>
 <% end %>
 
 <% content_for :networks do %>
   <%= link_to @project.facebook_link, target: '_blank' do %>
-    <i class="fa fa-facebook-official fa-3x"> </i>
-  <% end %>
+    <i class="fa fa-facebook-official fa-3x"> </i> 
 
+  <% end %>
   <%= link_to @project.instagram_link, target: '_blank' do %>
-    <i class="fa fa-instagram fa-3x"> </i>
+    <i class="fa fa-instagram fa-3x"> </i> 
   <% end %>
 
   <%= link_to @project.youtube_link, target: '_blank' do %>
