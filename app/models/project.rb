@@ -47,4 +47,17 @@ class Project < ActiveRecord::Base
     slide3.title = "Slider"
   end
 
+  def self.image_type index
+    type = ""
+    if index == 0
+      type = "Problem"
+    elsif index == 1
+      type = "Solution"
+    else
+      type = "Team"
+    end
+
+    type
+  end
+
 end

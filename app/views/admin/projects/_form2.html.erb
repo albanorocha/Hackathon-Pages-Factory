@@ -17,18 +17,20 @@
   <div class="form-inputs">
     <%= f.input :solution %>
   </div>
- 
+
   <div class="form-inputs">
     <%= f.input :team_description %>
   </div>
 
   <h2>Imagens do Projeto</h2>
   <hr>
-  <%= f.simple_fields_for :images do |i| %>
-    <h3>Image x</h3>
-    <div class="form-inputs">
-      <%= i.input :image, as: :image_preview %>
-    </div>
+  <% @project.images.each.with_index do |image,index| %>
+    <%= f.simple_fields_for :images, image do |i| %>
+      <h3><%= "Image #{Project::image_type(index)}" %></h3>
+      <div class="form-inputs">
+        <%= i.input :image, as: :image_preview, input_html: {preview_version: :thumb} %>
+      </div>
+    <% end %>
   <% end %>
 
   <h2>Slider da Página</h2>
@@ -37,7 +39,7 @@
     <h3>Slider x</h3>
     <%= s.simple_fields_for :image do |i| %>
       <div class="form-inputs">
-        <%= i.input :image, as: :image_preview%>
+        <%= i.input :image, as: :image_preview, input_html: {preview_version: :thumb2}%>
       </div>
     <% end %>
 

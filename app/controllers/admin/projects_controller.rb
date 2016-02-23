@@ -68,8 +68,8 @@ class Admin::ProjectsController < Admin::AdminController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to admin_event_team_projects_path(:code => @event.code,
-          :event_team_id => @team), notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
+        notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
