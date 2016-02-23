@@ -17,12 +17,13 @@
   <div class="form-inputs">
     <%= f.input :solution %>
   </div>
-
+ 
   <div class="form-inputs">
     <%= f.input :team_description %>
   </div>
 
-  <h2>Project Images</h2>
+  <h2>Imagens do Projeto</h2>
+  <hr>
   <%= f.simple_fields_for :images do |i| %>
     <h3>Image x</h3>
     <div class="form-inputs">
@@ -30,7 +31,8 @@
     </div>
   <% end %>
 
-  <h2>Project Sliders</h2>
+  <h2>Slider da Página</h2>
+  <hr>
   <%= f.simple_fields_for :sliders do |s| %>
     <h3>Slider x</h3>
     <%= s.simple_fields_for :image do |i| %>
@@ -40,18 +42,20 @@
     <% end %>
 
     <div class="form-inputs">
-      <%= s.input :title %>
+      <%= s.input :title, label: "Título" %>
     </div>
 
     <div class="form-inputs">
-      <%= s.input :link %>
+      <%= s.input :link, label: "Link"  %>
     </div>
 
     <div class="form-inputs">
-      <%= s.input :description %>
+      <%= s.input :description, label: "Descrição" %>
     </div>
   <% end %>
 
+  <h2>Social Links</h2>
+  <hr>
   <div class="form-inputs">
     <%= f.input :facebook_link %>
   </div>
@@ -62,6 +66,8 @@
     <%= f.input :instagram_link %>
   </div>
 
+  <h2>Email de Contato</h2>
+  <hr>
   <div class="form-inputs">
     <%= f.input :email %>
   </div>

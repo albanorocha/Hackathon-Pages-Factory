@@ -1,41 +1,44 @@
 <div class="container">
   <div class="row centered">
-      <h2> <%= @event.code %> - <%= @event.name %> </h2>
+      <h2> <%= @event.code %> - <b><%= @event.name %></b> </h2>
       <hr>
     </div><!-- /row mt -->
 
       <!-- edit form column -->
-<div class="col-lg-11 centered">
+<div class="col-lg-10 col-lg-offset-1 centered">
 
     <% if !@event.image.nil? %>
-      <%= image_tag @event.image.image.url, height: "200px", width: "90%", class:"img-thumbnail" %>
+      <%= image_tag @event.image.image.url, height: "200", class:"img-thumbnail" %>
     <% else %>
-      <%= image_tag 'blog-bg.jpg', height: "200px", width: "90%", class:"img-thumbnail" %>
+      <%= image_tag 'bg3.jpg', height: "200", class:"img-thumbnail" %>
     <% end %>
+
+
+
 </div>
 
-<div class="col-lg-5 col-lg-offset-1">
-  <br>
+<div class="col-lg-5 col-lg-offset-2">
   <h4>Descrição do Evento</h4>
-
   <p><%= @event.description %></p>
-
-  <br>
-    <%= link_to 'Inscrever Participante', admin_event_users_path, class: "btn btn-info" %>
-    <%= link_to 'Equipes', admin_event_teams_path, class: "btn btn-warning" %>
 </div>
 
 <div class="col-lg-4 col-lg-offset-1">
-  <br>
   <h4>Detalhes do Evento</h4>
-
   <p><b>Data:</b> <%= @event.date %></p>
   <p><b>Cidade:</b> <%= @event.address %></p>
   <p><b>Status:</b> <%= @event.published %></p>
   <p><b>Inscrições:</b><%= @event.release_sign_up %></p>
-
-  <%= link_to 'Editar', edit_admin_event_path(@event), class: "btn btn-primary" %>
-<br>
-<br>
 </div>
+
+
+
+<div class="row col-lg-12">
+    <p class="centered">
+      <br>
+      <%= link_to 'Editar', edit_admin_event_path(@event), class: "btn btn-primary" %> &nbsp;
+      <%= link_to 'Inscrever Participante', admin_event_users_path, class: "btn btn-info" %> &nbsp;
+      <%= link_to 'Equipes', admin_event_teams_path, class: "btn btn-warning" %>
+    </p>
+</div>
+
 </div>
