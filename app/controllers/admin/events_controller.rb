@@ -1,5 +1,6 @@
 class Admin::EventsController < Admin::AdminController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  add_breadcrumb "Eventos", :admin_events_path
 
   # GET /events
   # GET /events.json
@@ -10,6 +11,7 @@ class Admin::EventsController < Admin::AdminController
   # GET /events/1
   # GET /events/1.json
   def show
+    add_breadcrumb "#{@event.code}", :admin_event_path
   end
 
   # GET /events/new
@@ -20,6 +22,8 @@ class Admin::EventsController < Admin::AdminController
 
   # GET /events/1/edit
   def edit
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Edit", :edit_admin_event_path
     if @event.image.nil?
       @event.build_image
     end

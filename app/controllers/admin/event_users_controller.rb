@@ -1,10 +1,13 @@
 class Admin::EventUsersController < Admin::AdminController
   before_action :set_event_user, only: [:show, :edit, :update, :destroy]
   before_action :set_event
+  add_breadcrumb "Eventos", :admin_events_path
 
   # GET /admin/event_users
   # GET /admin/event_users.json
   def index
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Usuários", :admin_event_users_path
     @event_users = EventUser.where(event: @event)
   end
 
@@ -15,12 +18,18 @@ class Admin::EventUsersController < Admin::AdminController
 
   # GET /admin/event_users/new
   def new
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Usuários", :admin_event_users_path
+    add_breadcrumb "New Event", :new_admin_event_user_path
     @event_user = EventUser.new
     @users = User.all
   end
 
   # GET /admin/event_users/1/edit
   def edit
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Usuários", :admin_event_users_path
+    add_breadcrumb "Edit Event", :edit_admin_event_user_path
     @users = User.all
   end
 

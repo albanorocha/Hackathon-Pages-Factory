@@ -2,6 +2,7 @@ class Admin::HomeConfigurationController < Admin::AdminController
   before_action :set_home_configuration, only: [:index, :update]
 
   def index
+    add_breadcrumb "Home Configuration", :admin_home_configuration_path
   end
 
   def update

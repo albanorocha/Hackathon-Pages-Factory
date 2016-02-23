@@ -1,26 +1,38 @@
 class Admin::TeamsController < Admin::AdminController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :set_event
+  add_breadcrumb "Eventos", :admin_events_path
 
   # GET /teams
   # GET /teams.json
   def index
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Equipes", :admin_event_teams_path
     @teams = Team.where(event: @event)
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Equipes", :admin_event_teams_path
+    add_breadcrumb "#{@team.name}", :admin_event_team_path
     @team_users = TeamUser.where(team: @team)
   end
 
   # GET /teams/new
   def new
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Equipes", :admin_event_teams_path
+    add_breadcrumb "New Team", :new_admin_event_team_path
     @team = Team.new
   end
 
   # GET /teams/1/edit
   def edit
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Equipes", :admin_event_teams_path
+    add_breadcrumb "Edit Team", :edit_admin_event_team_path
   end
 
   # POST /teams
@@ -31,7 +43,8 @@ class Admin::TeamsController < Admin::AdminController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to admin_event_team_path(@team, code: @event.code), notice: 'Team was successfully created.' }
+        format.html { redirect_to admin_event_team_path(@team, code: @event.code),
+          notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
@@ -45,7 +58,8 @@ class Admin::TeamsController < Admin::AdminController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to admin_event_team_path(@team, code: @event.code) ,
+          notice: 'Team was successfully updated.' }
         format.json { render :show, status: :ok, location: @team }
       else
         format.html { render :edit }

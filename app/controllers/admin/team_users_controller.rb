@@ -2,6 +2,7 @@ class Admin::TeamUsersController < Admin::AdminController
   before_action :set_team_user, only: [:show, :edit, :update, :destroy]
   before_action :set_event
   before_action :set_team
+  add_breadcrumb "Eventos", :admin_events_path
 
   # GET /admin/team_users
   # GET /admin/team_users.json
@@ -17,12 +18,21 @@ class Admin::TeamUsersController < Admin::AdminController
 
   # GET /admin/team_users/new
   def new
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Equipes", :admin_event_teams_path
+    add_breadcrumb "#{@team.name}", admin_event_team_path(@team, code: @event.code)
+    add_breadcrumb "New Member", :new_admin_event_team_user_path
+
     @team_user = TeamUser.new
     @users = Event.find_by_code(@event.code).users
   end
 
   # GET /admin/team_users/1/edit
   def edit
+    add_breadcrumb "#{@event.code}", :admin_event_path
+    add_breadcrumb "Equipes", :admin_event_teams_path
+    add_breadcrumb "#{@team.name}", admin_event_team_path(@team, code: @event.code)
+    add_breadcrumb "Edit Member", :edit_admin_event_team_user_path
   end
 
   # POST /admin/team_users

@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin_event, @team] do |f| %>
+<%= simple_form_for [:admin_event, @team], url: admin_event_team_path(@team , :code => @event.code)  do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

@@ -28,7 +28,8 @@
     <%= f.simple_fields_for :images, image do |i| %>
       <h3><%= "Image #{Project::image_type(index)}" %></h3>
       <div class="form-inputs">
-        <%= i.input :image, as: :image_preview, input_html: {preview_version: :thumb} %>
+        <%= image_tag image.image.url %>
+        <%= i.input :image%>
       </div>
     <% end %>
   <% end %>
