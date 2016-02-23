@@ -6,6 +6,10 @@ class Event < ActiveRecord::Base
 
   has_one :image, :as => :imageable, dependent: :destroy
 
+  geocoded_by :address
+  after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
+
+
   accepts_nested_attributes_for :image
 
   def to_param

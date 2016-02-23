@@ -12,10 +12,15 @@
     <% else %>
       <%= image_tag 'bg3.jpg', height: "200", class:"img-thumbnail" %>
     <% end %>
-
-
-
 </div>
+
+<div class="col-lg-10 col-lg-offset-1 centered">
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}" %>
+</div>
+
+
+
+
 
 <div class="col-lg-5 col-lg-offset-2">
   <h4>Descrição do Evento</h4>

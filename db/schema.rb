@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221200106) do
+ActiveRecord::Schema.define(version: 20160223055624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20160221200106) do
     t.boolean  "published"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "home_configurations", force: :cascade do |t|
@@ -76,7 +78,6 @@ ActiveRecord::Schema.define(version: 20160221200106) do
     t.string   "title"
     t.string   "link"
     t.text     "description"
-    t.boolean  "is_title_link"
     t.integer  "sliderable_id"
     t.string   "sliderable_type"
     t.datetime "created_at",      null: false

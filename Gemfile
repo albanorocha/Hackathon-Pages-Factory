@@ -25,6 +25,7 @@ gem 'therubyracer', :platform=>:ruby
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'simple_form_fancy_uploads'
 gem "mini_magick"
+gem 'geocoder'
 group :development do
   gem 'better_errors'
   gem 'rails_layout'
