@@ -7,32 +7,31 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :description, label: "Descrição" %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :description, label: "Descrição do Projeto" %>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :problem %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :problem , label: "Qual o problema"%>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :solution %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :solution, label: "Qual a solução" %>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :team_description %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :team_description, label: "Descrição da equipe" %>
+    </div>
 
-
-  <h2>Imagens do Projeto</h2>
-  <hr>
-  <div class="row col-lg-12">
+  <div class="well row col-lg-12">
+    <h2>Imagens do Projeto</h2>
+    <hr>
   <% @project.images.each.with_index do |image,index| %>
     <%= f.simple_fields_for :images, image do |i| %>
       <div class="row col-lg-3 col-lg-offset-1">
       <div class="form-inputs centered">
         <h3><%= "Image #{Project::image_type(index)}" %></h3>
         <%= i.input :image, as: :image_preview, input_html: {preview_version: :project_thumb}, label: "< 450 x 350 >" %>
-       
       </div>
       </div>
     <% end %>
@@ -42,7 +41,7 @@
 
 
 
-<div class="row col-lg-12" style="background:#eee">
+<div class="well row col-lg-12">
     <h2>Slider da Página</h2>
   <hr>
   <%= f.simple_fields_for :sliders do |s| %>
