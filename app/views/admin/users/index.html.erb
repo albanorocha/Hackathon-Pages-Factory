@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row centered">
-      <h2> <%= link_to new_admin_user_path do %> 
+      <h2> <%= link_to new_admin_user_path do %>
         <i class="fa fa-plus-circle"></i> Usuário
       <% end %>
       </h2>
@@ -26,19 +26,19 @@
         <td><%= user.email %></td>
         <td><span class="label label-warning label-mini"><%= user.role %></span></td>
         <td>
-          <%= link_to [:admin, user] do %> 
+          <%= link_to [:admin, user] do %>
             <i class="fa fa-eye"></i>
           <% end %>
         </td>
         <td>
-          <%= link_to edit_admin_user_path(user) do %> 
+          <%= link_to edit_admin_user_path(user) do %>
             <i class="fa fa-pencil"></i>
           <% end %>
-        </td>        
+        </td>
         <td>
-          <%= link_to [:admin, user], method: :delete, data: { confirm: 'Tem certeza?' } do %> 
+          <%= link_to [:admin, user], method: :delete, data: { confirm: 'Tem certeza?' } do %>
             <i class="fa fa-trash-o"></i>
-        <% end %>          
+        <% end %>
         </td>
       </tr>
     <% end %>

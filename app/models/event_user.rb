@@ -1,5 +1,5 @@
 class EventUser < ActiveRecord::Base
-  enum role: [:medhacker, :manager, :mentor]
+  enum role: [:medhacker, :organizador]
   after_initialize :set_default_role, :if => :new_record?
 
   belongs_to :user

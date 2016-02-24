@@ -30,8 +30,20 @@
         <td><%= event.name %></td>
         <td><%= event.date %></td>
         <td><%= event.address %></td>
-        <td><%= event.release_sign_up %></td>
-        <td><%= event.published %></td>
+        <td>
+          <% if event.release_sign_up %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-times"></i>
+          <% end %>
+        </td>
+        <td>
+          <% if event.published %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-times"></i>
+          <% end %>
+        </td>
 
         <td>
           <%= link_to admin_event_path(event) do %>

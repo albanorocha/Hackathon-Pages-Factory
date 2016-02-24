@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::AdminController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :edit_password, :update, :update_password, :destroy]
   add_breadcrumb "Usuários", :admin_users_path
 
   # GET /admin/users
@@ -25,17 +25,28 @@ class Admin::UsersController < Admin::AdminController
     add_breadcrumb "Edit User", :edit_admin_user_path
   end
 
+  # GET /admin/users/1/edit
+  def edit_password
+    add_breadcrumb "Edit Password", :edit_password_admin_user_path
+  end
+
+  # GET /admin/users/1/edit
+  def update_password
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to admin_users_path, notice: 'Usuário foi ATUALIZADO com sucesso.' }
+        format.json { render :show, status: :ok, location: [:admin, @user] }
+      else
+        format.html { render :edit }
+        format.json { render json: [:admin, @user].errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /admin/users
   # POST /admin/users.json
   def create
     @user = User.new(user_params)
-
-
-foi CRIADO com sucesso.
-
-foi ATUALIZADO com sucesso.
-
-foi EXCLUÍDO com sucesso.
 
     respond_to do |format|
       if @user.save

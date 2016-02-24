@@ -1,10 +1,11 @@
 <% if user_signed_in? %>
  <li>
     <%= link_to (admin_root_path) do %>
-      <i class="fa fa-dashboard"></i> Dashboard                    
+      <i class="fa fa-dashboard"></i> Dashboard
     <% end %>
  </li>
   <li><%= link_to 'Sair', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
   <li><%= link_to 'Entrar', new_user_session_path %></li>
+  <li><%= link_to 'Registrar', new_user_registration_path %></li>
 <% end %>

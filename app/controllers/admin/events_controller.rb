@@ -1,5 +1,5 @@
 class Admin::EventsController < Admin::AdminController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:event_subscribe, :show, :edit, :update, :destroy]
   add_breadcrumb "Eventos", :admin_events_path
 
   # GET /events
@@ -30,6 +30,18 @@ class Admin::EventsController < Admin::AdminController
     end
   end
 
+  def event_subscribe
+    @event.users << current_user
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to [:admin, @event], notice: 'Inscrição realizada com sucesso.' }
+        format.json { render :show, status: :created, location: [:admin, @event] }
+      else
+        format.html { render :new }
+        format.json { render json: [:admin, @event].errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # POST /events
   # POST /events.json

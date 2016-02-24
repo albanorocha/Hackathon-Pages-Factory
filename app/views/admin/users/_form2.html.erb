@@ -1,0 +1,23 @@
+<%= simple_form_for([:admin, @user]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: "Nome" %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :email, label: "Email" %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :role, :collection => User.roles, :label_method => :first,
+        :value_method => :first , :label => "Permissão" ,:include_blank => false %>
+  </div>
+
+  <%= link_to "Editar Password", :action => "edit_password"%>
+
+  <div class="form-actions">
+    <br>
+    <%= f.button :submit, value: "Enviar", class: "btn btn-primary btn-lg btn-block" %>
+  </div>
+<% end %>

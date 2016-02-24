@@ -13,7 +13,14 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'events#index'
 
-    resources :users
+    resources :users do
+      member do
+        get 'edit_password', to: 'users#edit_password'
+        patch 'user_password', to: 'users#update_password'
+        put 'user_password', to: 'users#update_password'
+      end
+    end
+
 
     get 'home_configuration', to: 'home_configuration#index'
 
@@ -22,6 +29,7 @@ Rails.application.routes.draw do
 
     resources :events, param: :code do
       member do
+        get 'event_subscribe', to: 'events#event_subscribe'
         resources :event_users, :path => 'users'
         resources :teams, as: :event_teams do
           resources :team_users, :path => 'members', :as => 'users'

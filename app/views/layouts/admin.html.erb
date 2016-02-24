@@ -32,21 +32,10 @@
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" data-toggle="tooltip" title="Projetos Cadastrados!">
                             <i class="fa fa-heartbeat"></i>
-                            <span class="badge bg-theme">54</span>
+                            <span class="badge bg-theme"><%= Project.count %></span>
                         </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">Projetos cadastrados!</p>
-                            </li>
-                          <!--
-                            <li class="external">
-                                <a href="#">Veja mais</a>
-                            </li>
-                          -->
-                        </ul>
                     </li>
                     <!-- settings end -->
                 </ul>
@@ -72,7 +61,8 @@
               <ul class="sidebar-menu">
                   <p class="centered"><a>
                   <%= image_tag("ui-danro.jpg", class: "img-circle",width:"60" ) %></a></p>
-                  <h5 class="centered"> <%= current_user.name %> </h5>
+                  <h5 class="centered"> <%= current_user.name %> <br> <span class="label label-warning label-mini"><%= current_user.role %> </h5>
+
 
                   <li class="mt">
                      <%= link_to(admin_events_path) do %>
@@ -112,8 +102,8 @@
               <div class="row">
                 <div class="col-lg-12 main-chart">
                   <%= render 'layouts/messages' %>
-                  <div class="container"> 
-                  <div class="row col-lg-10 col-lg-offset-1"> 
+                  <div class="container">
+                  <div class="row col-lg-10 col-lg-offset-1">
                   <ol class="breadcrumb">
                     <%= render_breadcrumbs :tag => :li, :separator => "" %>
                   </ol>
