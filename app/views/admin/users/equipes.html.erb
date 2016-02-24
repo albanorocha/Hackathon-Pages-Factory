@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row centered">
+      <h2> Minhas Equipes </h2>
+      <hr>
+</div>
+
+<div class="row col-lg-4 col-lg-offset-4 table-responsive">
+
+<table class="table table-hover", style="background:#fff">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+
+        <td>
+          <%= link_to admin_event_team_path(team, :code => team.event.code) do %> 
+            <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+</div>

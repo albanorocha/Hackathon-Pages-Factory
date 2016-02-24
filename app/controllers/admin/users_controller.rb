@@ -14,6 +14,12 @@ class Admin::UsersController < Admin::AdminController
     add_breadcrumb "#{@user.name}", :admin_user_path
   end
 
+  # GET /admin/users/1/edit
+  def equipes
+    add_breadcrumb "Equipes", :equipes_admin_user_path
+    @teams = current_user.teams
+  end
+
   # GET /admin/users/new
   def new
     add_breadcrumb "New User", :new_admin_user_path
