@@ -8,7 +8,7 @@ class Admin::HomeConfigurationController < Admin::AdminController
   def update
     respond_to do |format|
       if @home_configuration.update(home_configuration_params)
-        format.html { redirect_to admin_home_configuration_path, notice: 'Event was successfully updated.' }
+        format.html { redirect_to admin_home_configuration_path, notice: 'Página Home foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: [:admin, @home_configuration] }
       else
         format.html { render :edit }

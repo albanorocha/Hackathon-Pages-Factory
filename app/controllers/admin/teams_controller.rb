@@ -44,7 +44,7 @@ class Admin::TeamsController < Admin::AdminController
     respond_to do |format|
       if @team.save
         format.html { redirect_to admin_event_team_path(@team, code: @event.code),
-          notice: 'Team was successfully created.' }
+          notice: 'Equipe foi CRIADO com sucesso.' }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class Admin::TeamsController < Admin::AdminController
     respond_to do |format|
       if @team.update(team_params)
         format.html { redirect_to admin_event_team_path(@team, code: @event.code) ,
-          notice: 'Team was successfully updated.' }
+          notice: 'Equipe foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: @team }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class Admin::TeamsController < Admin::AdminController
   def destroy
     @team.destroy
     respond_to do |format|
-      format.html { redirect_to admin_event_teams_url, notice: 'Team was successfully destroyed.' }
+      format.html { redirect_to admin_event_teams_url, notice: 'Equipe foi EXCLUÍDO com sucesso.' }
       format.json { head :no_content }
     end
   end

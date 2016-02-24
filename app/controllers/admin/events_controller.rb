@@ -42,7 +42,7 @@ class Admin::EventsController < Admin::AdminController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to [:admin, @event], notice: 'Event was successfully created.' }
+        format.html { redirect_to [:admin, @event], notice: 'Evento foi CRIADO com sucesso.' }
         format.json { render :show, status: :created, location: [:admin, @event] }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class Admin::EventsController < Admin::AdminController
     respond_to do |format|
       if @event.update(event_params)
         @event.code.upcase!
-        format.html { redirect_to [:admin, @event], notice: 'Event was successfully updated.' }
+        format.html { redirect_to [:admin, @event], notice: 'Evento foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: [:admin, @event] }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class Admin::EventsController < Admin::AdminController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to admin_events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to admin_events_url, notice: 'Evento foi EXCLUÍDO com sucesso.' }
       format.json { head :no_content }
     end
   end

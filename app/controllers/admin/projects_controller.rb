@@ -49,7 +49,7 @@ class Admin::ProjectsController < Admin::AdminController
     respond_to do |format|
       if @project.save
         format.html { redirect_to edit_admin_event_team_project_path(@project, :code => @event.code,
-          :event_team_id => @team) , notice: 'Project was successfully created.' }
+          :event_team_id => @team) , notice: 'Projeto foi CRIADO com sucesso.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -65,7 +65,7 @@ class Admin::ProjectsController < Admin::AdminController
     respond_to do |format|
       if @project.update_attributes(project_params)
         format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
-          notice: 'Project was successfully updated.' }
+          notice: 'Projeto foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ class Admin::ProjectsController < Admin::AdminController
     @project.destroy
     respond_to do |format|
       format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
-        notice: 'Project was successfully destroyed.' }
+        notice: 'Projeto foi EXCLUÍDO com sucesso.' }
       format.json { head :no_content }
     end
   end

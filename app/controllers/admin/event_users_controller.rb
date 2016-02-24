@@ -46,7 +46,7 @@ class Admin::EventUsersController < Admin::AdminController
     respond_to do |format|
       if @event_user.save
         format.html { redirect_to admin_event_users_path(:code => @event.code),
-            notice: 'Event user was successfully created.' }
+            notice: 'Paticipante foi CRIADO com sucesso.' }
         format.json { render :show, status: :created, location:[:admin, @event_user] }
       else
         format.html { render :new }
@@ -61,7 +61,7 @@ class Admin::EventUsersController < Admin::AdminController
     respond_to do |format|
       if @event_user.update(event_user_params)
         format.html { redirect_to admin_event_users_url,
-            notice: 'Event user was successfully updated.' }
+            notice: 'Paticipante foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: @event_user }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class Admin::EventUsersController < Admin::AdminController
   def destroy
     @event_user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_event_users_url, notice: 'Event user was successfully destroyed.' }
+      format.html { redirect_to admin_event_users_url, notice: 'Paticipante foi EXCLUÍDO com sucesso.' }
       format.json { head :no_content }
     end
   end
