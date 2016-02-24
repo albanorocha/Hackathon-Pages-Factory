@@ -1,0 +1,5 @@
+<% @teams.each do |team| %>
+ <p> Nome: <b> <%= link_to team.name, admin_event_team_path(team, code: team.event.code) %> </b>  <p>
+ <p> Código do Evento: <b> <%= team.event.code %> </b>  <p>
+ <p> Nome do Evento: <b> <%= team.event.name %> </b>  <p>
+<% end %>
