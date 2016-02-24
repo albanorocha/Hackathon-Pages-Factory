@@ -19,7 +19,7 @@
   <br>
   <h4>Detalhes do Evento</h4>
   <p><%= @event.description %></p>
-  <p><b>Inscrições liberadas:</b> 
+  <p><b>Inscrições liberadas:</b>
     <% if @event.release_sign_up %>
       <i class="fa fa-check" style="color: green"></i>
     <% else %>
@@ -62,15 +62,15 @@
                             <div class="overlay text-center" style="background: rgb(0, 102, 177)">
                                 <div class="recent-work-inner">
                                     <h3>
-                                        <%= link_to project.name, project_path(code: @event, project_name: project.name.parameterize)%>
+                                        <%= link_to project.name, project_path(code: @event, project_name: project.path)%>
                                     </h3>
                                 </div>
                             </div>
                         </div>
                     </div><!--/.portfolio-item-->
-                                 
+
           <%end%>
-          </div>   
+          </div>
           </div>
   </section><!--/#portfolio-item-->
 </div>

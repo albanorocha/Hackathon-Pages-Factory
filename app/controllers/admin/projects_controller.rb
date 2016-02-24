@@ -44,7 +44,7 @@ class Admin::ProjectsController < Admin::AdminController
     @project.create_slides
 
     @project.team = @team
-    @project.name.upcase!
+    @project.path = @project.name.parameterize
 
     respond_to do |format|
       if @project.save

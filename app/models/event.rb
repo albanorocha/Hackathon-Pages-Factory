@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
-  has_many :event_users
+  has_many :event_users, dependent: :destroy
   has_many :users, :through => :event_users
-  has_many :teams
+  has_many :teams, dependent: :destroy
   has_many :projects, through: :teams
 
   has_one :image, :as => :imageable, dependent: :destroy
