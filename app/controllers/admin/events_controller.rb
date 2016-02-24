@@ -5,7 +5,8 @@ class Admin::EventsController < Admin::AdminController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    #@events = Event.all
+    @events = policy_scope(Event)
   end
 
   # GET /events/1
@@ -48,6 +49,10 @@ class Admin::EventsController < Admin::AdminController
   def create
     @event = Event.new(event_params)
     @event.code.upcase!
+
+    if @event.image.nil?
+      @event.create_image
+    end
 
     user = @event.event_users.build
     user.user = current_user
