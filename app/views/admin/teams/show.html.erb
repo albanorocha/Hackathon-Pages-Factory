@@ -1,12 +1,6 @@
 <div class="container">
   <div class="row centered">
       <h2><%= @team.name %></h2>
-      <div class"row col-lg-4 col-lg-offset-4">
-      <p >
-        <%= link_to 'Editar', "#" , class: "btn btn-primary btn-sm" %> | 
-        <%= link_to 'Excluir', "#" , class: "btn btn-danger btn-sm" %> 
-      </p>
-      </div>
       <hr>
    </div>
    </div>
@@ -87,13 +81,6 @@
             <i class="fa fa-pencil"></i>
           <% end %>
         </td>
-        <td>
-          <%= link_to admin_event_team_project_path(team_project,
-          event_team_id: team_project.team, code: @event.code), method: :delete, data: { confirm: 'Tem certeza?' } do %>
-            <i class="fa fa-trash-o"></i>
-        <% end %>
-        </td>
-
       </tr>
     <% end %>
   </tbody>
@@ -111,3 +98,20 @@
 <%= link_to 'Projetos', admin_event_team_projects_path(code: @event.code, event_team_id: @team) %>
 -->
 </div>
+
+<div class="container">
+  <br>
+  <div class="well row centered col-lg-10 col-lg-offset-1">
+      <%= link_to 'Editar', edit_admin_event_team_path , class: "btn btn-primary btn-sm" %> | 
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'Excluir do Sistema', admin_event_team_path(@team, :code => @event.code), method: :delete, data: { confirm: 'Tem certeza?' } %></li>
+        </ul>
+      </div>      
+   </div>
+   </div>

@@ -6,8 +6,25 @@
 
 <div class="row col-lg-10 col-lg-offset-1">
 <%= render 'form2' %>
-
+<br>
 </div>
 
 </div>
+
+<div class="container">
+  <div class="well row centered col-lg-10 col-lg-offset-1"> 
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger btn-sm">Excluir Projeto
+        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'Excluir do Sistema', admin_event_team_project_path(@project, code: @event.code,
+          event_team_id: @team), method: :delete, data: { confirm: 'Tem certeza?' } %></li>
+        </ul>
+      </div>      
+   </div>
+   </div>
+
 
