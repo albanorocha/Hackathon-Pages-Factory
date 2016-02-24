@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::AdminController
   before_action :set_user, only: [:show, :edit, :edit_password, :update, :update_password, :destroy]
-  add_breadcrumb "Usuários", :admin_users_path
+  add_breadcrumb "Usuários", :admin_users_path, except: [:equipes]
 
   # GET /admin/users
   # GET /admin/users.json
