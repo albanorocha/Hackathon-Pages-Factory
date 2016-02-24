@@ -9,7 +9,7 @@
 <div class="col-lg-10 col-lg-offset-1 centered">
 
     <% if !@event.image.nil? %>
-      <%= image_tag @event.image.image.url, height: "200", class:"img-thumbnail" %>
+      <%= image_tag @event.image.image.slider.url, height: "200", class:"img-thumbnail" %>
     <% else %>
       <%= image_tag 'bg3.jpg', height: "200", class:"img-thumbnail" %>
     <% end %>
