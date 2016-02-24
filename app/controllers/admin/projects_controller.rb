@@ -61,12 +61,14 @@ class Admin::ProjectsController < Admin::AdminController
   # PATCH/PUT /admin/projects/1
   # PATCH/PUT /admin/projects/1.json
   def update
-    @project.name.upcase!
+    @project.path = @project.name.parameterize
     respond_to do |format|
       if @project.update_attributes(project_params)
-        format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
-          notice: 'Projeto foi ATUALIZADO com sucesso.' }
-        format.json { render :show, status: :ok, location: @project }
+        if @project.update_attributes(path: @project.name.parameterize)
+          format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
+            notice: 'Projeto foi ATUALIZADO com sucesso.' }
+          format.json { render :show, status: :ok, location: @project }
+        end
       else
         format.html { render :edit }
         format.json { render json: @project.errors, status: :unprocessable_entity }
