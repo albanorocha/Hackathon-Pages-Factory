@@ -16,11 +16,22 @@
 
 
 <div class="col-lg-5 col-lg-offset-1">
-  <h4>Detalhes do Evento</h4>
-    <p><b>Status:</b> <%= @event.published %>  </p>
-    <p><b>Inscrições:</b><%= @event.release_sign_up %> </p>
-      
+  <h4>Detalhes do Evento</h4>    
   <p><%= @event.description %></p>
+  <p><b>Publicado:</b>
+        <% if @event.published %>
+          <i class="fa fa-check" style="color: green"></i>
+        <% else %>
+          <i class="fa fa-times" style="color: red"></i>
+        <% end %>
+  </p>
+  <p><b>Inscrições liberadas:</b>
+        <% if @event.release_sign_up %>
+          <i class="fa fa-check" style="color: green"></i>
+        <% else %>
+          <i class="fa fa-times" style="color: red"></i>
+        <% end %>
+  </p>
 
        <br>
     <p class="centered">

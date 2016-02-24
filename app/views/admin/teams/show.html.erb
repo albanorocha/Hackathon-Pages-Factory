@@ -23,7 +23,7 @@
     <% @team_users.each do |team_user| %>
       <tr>
         <td><%= team_user.user.name %></td>
-        <td><%= team_user.role %></td>
+        <td><span class="label label-warning label-mini"><%= team_user.role %></span></td>
 <!--
         <td>
           <%= link_to  admin_event_team_user_path(team_user,

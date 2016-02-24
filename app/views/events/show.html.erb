@@ -1,3 +1,4 @@
+<% if @event.published %>
 <div class="container">
 <div class="row text-center">
    <br>
@@ -18,12 +19,20 @@
   <br>
   <h4>Detalhes do Evento</h4>
   <p><%= @event.description %></p>
-  <p><b>Inscrições liberadas:</b> <%= @event.release_sign_up %> </p>
+  <p><b>Inscrições liberadas:</b> 
+    <% if @event.release_sign_up %>
+      <i class="fa fa-check" style="color: green"></i>
+    <% else %>
+      <i class="fa fa-times" style="color: red"></i>
+    <% end %>
+  </p>
 
        <br>
+    <% if @event.release_sign_up %>
     <p class="text-center">
       <%= link_to 'Inscreva-se', event_subscribe_admin_event_path,  class: "btn btn-success btn-lg" %>
     </p>
+    <%end%>
 </div>
 
 <div class="col-lg-4 col-lg-offset-1">
@@ -41,11 +50,9 @@
    <hr>
 </div>
 
-<section id="portfolio">
+  <section id="portfolio">
        <div class="row">
-
 				<% @projects.each do |project| %>
-
                 <div class="portfolio-items">
                     <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
                         <div class="recent-work-wrap">
@@ -55,27 +62,23 @@
                             <div class="overlay text-center" style="background: rgb(0, 102, 177)">
                                 <div class="recent-work-inner">
                                     <h3>
-
                                         <%= link_to project.name, project_path(code: @event, project_name: project.name.parameterize)%>
-
                                     </h3>
-
-                           <!--
-                                    <br>
-                                    <p>
-
-                                        <%=project.description.first(180) + " (...)" %>
-
-                                    </p>
-                          -->
-
                                 </div>
                             </div>
                         </div>
                     </div><!--/.portfolio-item-->
-                    <%end%>
-
-                </div>
-            </div>
-        </section><!--/#portfolio-item-->
+                </div>                    
+          <%end%>
+          </div>
+  </section><!--/#portfolio-item-->
 </div>
+<%else%>
+<div class="container">
+  <div class="row text-center">
+     <br>
+     <h2>Este evento não foi publicado</b> </h2>
+     <hr>
+  </div>
+</div>
+<%end%>

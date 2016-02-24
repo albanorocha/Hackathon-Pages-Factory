@@ -42,6 +42,7 @@
         <span class="sr-only"></span>
     </a>
 </div><!-- /.carousel -->
+</div>
 
 
 <div class="container">
@@ -55,37 +56,27 @@
     <section id="portfolio">
         <div class="row">
 
-            <% @events.each do |event| %>
+        <% @events.each do |event| %>
 
-            <div class="portfolio-items">
-                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
-                    <div class="recent-work-wrap">
+          <% if event.published %>
+                <div class="portfolio-items">
+                    <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
+                        <div class="recent-work-wrap">
 
-                        <%= image_tag event.image.image.project.url , class: "img-responsive" %>
+                            <%= image_tag event.image.image.project.url , class: "img-responsive" %>
 
-                        <div class="overlay text-center">
-                            <div class="recent-work-inner">
-                                <h3>
-
-                                    <%= link_to event.name, event_path(code: event.code)%>
-
-                                </h3>
-
-                            <!--
-                             <br>
-                                <p>
-
-                                    <%=event.description.first(180) + " (...)" %>
-
-                                </p>
-                            -->
+                            <div class="overlay text-center">
+                                <div class="recent-work-inner">
+                                    <h3>
+                                        <%= link_to event.name, event_path(code: event.code)%>
+                                    </h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!--/.portfolio-item-->
-                <%end%>
-
-            </div>
+                    </div><!--/.portfolio-item-->
+                  </div>
+              <%end%>    
+            <%end%>
         </div>
     </section><!--/#portfolio-item-->
 </div>
