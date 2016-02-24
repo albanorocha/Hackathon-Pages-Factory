@@ -24,7 +24,7 @@
 
     <%= f.simple_fields_for :image do |i| %>
       <div class="form-inputs">
-        <%= i.input :image, as: :image_preview %>
+        <%= i.input :image, as: :image_preview, input_html: {preview_version: :slider_thumb}, label: "< 1200 x 480 >"%>
       </div>
     <% end %>
 

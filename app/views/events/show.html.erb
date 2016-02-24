@@ -3,14 +3,41 @@
    <br>
    <h2><%=@event.code %> - <b> <%= @event.name %></b> </h2>
    <hr>
-   <%= image_tag @event.image.image.url , class: "img-responsive", size: "500" %>
-   <p class="lead"><%= @event.description %></p>
 </div>
 
+<div class="col-lg-10 col-lg-offset-1 centered">
 
+    <% if !@event.image.nil? %>
+      <%= image_tag @event.image.image.url, height: "200", class:"img-thumbnail" %>
+    <% else %>
+      <%= image_tag 'bg3.jpg', height: "200", class:"img-thumbnail" %>
+    <% end %>
+</div>
+
+<div class="col-lg-5 col-lg-offset-1">
+  <br>
+  <h4>Detalhes do Evento</h4>
+  <p><%= @event.description %></p>
+  <p><b>Inscrições liberadas:</b> <%= @event.release_sign_up %> </p>
+
+       <br>
+    <p class="text-center">
+      <%= link_to 'Inscreva-se', admin_event_users_path, class: "btn btn-success btn-lg" %>
+    </p>
+</div>
+
+<div class="col-lg-4 col-lg-offset-1">
+  <br>
+  <p><b>Data:</b> <%= @event.date %></p>
+  <p><b>Local:</b> <%= @event.address %></p>
+
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}",  height: "200" %>
+</div>
+</div>
+
+<div class="container">
 <div class="row text-center">
-   <br>
-   <h2> Projetos </h2>
+   <h2><br><br>  Projetos MedHacker</h2>
    <hr>
 </div>
 
@@ -23,7 +50,7 @@
                     <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
                         <div class="recent-work-wrap">
 
-                           <%= image_tag project.images[1].image.url , class: "img-responsive" %>
+                           <%= image_tag project.images[1].image.project.url , class: "img-responsive" %>
 
                             <div class="overlay text-center" style="background: rgb(0, 102, 177)">
                                 <div class="recent-work-inner">

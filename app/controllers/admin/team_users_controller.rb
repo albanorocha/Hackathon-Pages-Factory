@@ -48,7 +48,7 @@ class Admin::TeamUsersController < Admin::AdminController
     respond_to do |format|
       if @team_user.save
         format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
-          notice: 'Team user was successfully created.' }
+          notice: 'Membro de Equipe foi CRIADO com sucesso.' }
         format.json { render :show, status: :created, location: @team_user }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class Admin::TeamUsersController < Admin::AdminController
     respond_to do |format|
       if @team_user.update(team_user_params)
         format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
-          notice: 'Team user was successfully updated.' }
+          notice: 'Membro de Equipe foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: @team_user }
       else
         format.html { render :edit }
@@ -78,7 +78,7 @@ class Admin::TeamUsersController < Admin::AdminController
     @team_user.destroy
     respond_to do |format|
       format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
-        notice: 'Team user was successfully destroyed.' }
+        notice: 'Membro de Equipe foi EXCLUÍDO com sucesso.' }
       format.json { head :no_content }
     end
   end

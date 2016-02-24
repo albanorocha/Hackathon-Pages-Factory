@@ -30,9 +30,16 @@ class Admin::UsersController < Admin::AdminController
   def create
     @user = User.new(user_params)
 
+
+foi CRIADO com sucesso.
+
+foi ATUALIZADO com sucesso.
+
+foi EXCLUÍDO com sucesso.
+
     respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_users_path, notice: 'User was successfully created.' }
+        format.html { redirect_to admin_users_path, notice: 'Usuário foi CRIADO com sucesso.' }
         format.json { render :show, status: :created, location: [:admin, @user] }
       else
         format.html { render :new }
@@ -46,7 +53,7 @@ class Admin::UsersController < Admin::AdminController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_users_path, notice: 'Usuário foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: [:admin, @user] }
       else
         format.html { render :edit }
@@ -60,7 +67,7 @@ class Admin::UsersController < Admin::AdminController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_users_url, notice: 'Usuário foi EXCLUÍDO com sucesso.' }
       format.json { head :no_content }
     end
   end
