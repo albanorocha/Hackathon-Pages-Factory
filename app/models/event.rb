@@ -19,6 +19,17 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.events_markers
+    events = Event.all
+
+    markers = ""
+
+    events.each do |event|
+      markers+="&markers=#{event.latitude}%2C#{event.longitude}"
+    end
+    markers
+  end
+
   def to_param
     "#{code}".parameterize
   end
