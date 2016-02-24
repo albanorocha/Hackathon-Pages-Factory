@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
 
 
-  accepts_nested_attributes_for :image
+  accepts_nested_attributes_for :image, :reject_if => :all_blank
 
   def to_param
     "#{code}".parameterize

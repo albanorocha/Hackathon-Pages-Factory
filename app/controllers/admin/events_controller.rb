@@ -16,6 +16,7 @@ class Admin::EventsController < Admin::AdminController
 
   # GET /events/new
   def new
+    add_breadcrumb "Novo Evento", :new_admin_event_path
     @event = Event.new
     @event.build_image
   end
@@ -23,7 +24,7 @@ class Admin::EventsController < Admin::AdminController
   # GET /events/1/edit
   def edit
     add_breadcrumb "#{@event.code}", :admin_event_path
-    add_breadcrumb "Edit", :edit_admin_event_path
+    add_breadcrumb "Edit Evento", :edit_admin_event_path
     if @event.image.nil?
       @event.build_image
     end

@@ -16,7 +16,7 @@ end
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'devise-i18n'
-gem 'devise_invitable'
+#gem 'devise_invitable'
 gem 'high_voltage'
 gem 'pg'
 gem 'pundit'
