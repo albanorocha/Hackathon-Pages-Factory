@@ -27,6 +27,7 @@ gem 'simple_form_fancy_uploads'
 gem "mini_magick"
 gem 'geocoder'
 gem "breadcrumbs_on_rails"
+gem 'cloudinary'
 group :development do
   gem 'better_errors'
   gem 'rails_layout'
@@ -39,7 +40,6 @@ group :development, :test do
 end
 group :production do
   gem 'rails_12factor'
-  gem 'cloudinary'
 end
 group :test do
   gem 'capybara'
