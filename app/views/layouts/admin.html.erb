@@ -20,7 +20,7 @@
       <!--header start-->
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-toggle="tooltip" data-placement="right" title="Toggle Navigation"></div>
+                  <div  id="menu-toggle" class="fa fa-bars tooltips" data-toggle="tooltip" href="#menu-toggle" data-placement="right" title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
             <%=link_to (admin_root_path) , class: "logo" do %>
@@ -51,97 +51,88 @@
         </header>
       <!--header end-->
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu">
-                  <p class="centered"><a>
-                  <%= image_tag("ui-danro.jpg", class: "img-circle",width:"60" ) %></a></p>
-                  <h5 class="centered">
-                    <%= current_user.name %>
-                    <br>
-                    <span class="label label-warning label-mini"><%= current_user.role %></span>
-                  </h5>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+                   <div id="sidebar-wrapper"  style="background:#424a5d">
+            <ul class="sidebar-nav">
+               <p class="centered"><a>
+                <br><br><br><br>
+               <%= image_tag("ui-danro.jpg", class: "img-circle",width:"70" ) %></a></p>
+               <h5 class="centered">
+                 <b style="color: white"><%= current_user.name %></b>
+                 <br>
+                 <span class="label label-warning label-mini"><%= current_user.role %></span>
+
+               </h5>
 
 
-                  <li class="mt">
-                     <%= link_to(admin_events_path) do %>
-                         <i class="fa fa-th"></i>
-                         <span>Eventos</span>
-                     <% end %>
-                  </li>
+               <li class="mt">
+                  <%= link_to(admin_events_path) do %>
+                      <i class="fa fa-th"></i>
+                      <span>Eventos</span>
+                  <% end %>
+               </li>
 
-                  <li class="">
-                    <%= link_to(admin_users_path) do %>
-                       <i class="fa fa-user-md"></i>
-                       <span>Usuários</span>
-                    <% end %>
-                  </li>
+               <li class="">
+                 <%= link_to(admin_users_path) do %>
+                    <i class="fa fa-user-md"></i>
+                    <span>Usuários</span>
+                 <% end %>
+               </li>
 
-                  <li class="">
-                     <%= link_to(admin_home_configuration_path) do %>
-                         <i class="fa fa-cogs"></i>
-                         <span>Página Inicial</span>
-                     <% end %>
-                  </li>
+               <li class="">
+                  <%= link_to(admin_home_configuration_path) do %>
+                      <i class="fa fa-cogs"></i>
+                      <span>Página Inicial</span>
+                  <% end %>
+               </li>
 
-                 <li class="">
-                     <%= link_to equipes_admin_user_path(current_user) do %>
-                         <i class="fa fa-users"></i>
-                         <span>Minhas Equipes</span>
-                     <% end %>
-                  </li>
+              <li class="">
+                  <%= link_to equipes_admin_user_path(current_user) do %>
+                      <i class="fa fa-users"></i>
+                      <span>Minhas Equipes</span>
+                  <% end %>
+               </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                              <%= render 'layouts/messages' %>
+                              <div class="container">
+                              <div class="row ">
+                              <ol class="breadcrumb">
+                                <%= render_breadcrumbs :tag => :li, :separator => "" %>
+                              </ol>
+                                </div>
+                              </div>
+                              <%= yield %>
 
+                              <%= render '/layouts/form_back' %>
 
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
+                  <!--main content end-->
+                  
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-                <div class="col-lg-12 main-chart">
-                  <%= render 'layouts/messages' %>
-                  <div class="container">
-                  <div class="row col-lg-10 col-lg-offset-1">
-                  <ol class="breadcrumb">
-                    <%= render_breadcrumbs :tag => :li, :separator => "" %>
-                  </ol>
                     </div>
-                  </div>
-                  <%= yield %>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
 
-                  <%= render '/layouts/form_back' %>
-
-              </div><!-- /col-lg-12 END SECTION MIDDLE -->
-              </div><!--/row -->
-          </section>
-      </section>
-      <!--main content end-->
-</section>
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              &copy;Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados
-              <a href="#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-      <!--footer end-->
-
-
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                &copy;Copyright 2016 &middot; MedHacker &middot; Todos os direitos reservados
+                <a href="#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
    <%= javascript_include_tag 'administrator', 'data-turbolinks-track' => true %>
 
 
