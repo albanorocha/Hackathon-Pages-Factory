@@ -7,50 +7,51 @@
 <% end %>
 
 <% content_for :carousel do %>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
 
-        <% @sliders.each.with_index do |slider, index| %>
-            <!--DESTAQUE -->
-            <% if index == 0 %>
-                <div class="item active">
-            <% else %>
-                <div class="item">
-            <% end %>
-                <%= image_tag slider.image.image.slider.url %>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <% @sliders.each.with_index do |slider, index| %>
+        <!--DESTAQUE -->
+        <% if index == 0 %>
+            <div class="item active">
+        <% else %>
+            <div class="item">
+        <% end %>
+            <%= image_tag slider.image.image.slider.url %>
 
-                <div class="container">
-                    <div class="carousel-caption">
-                        <% if slider.link.blank? %>
-                            <h1> <%=slider.title%> </h1>
-                        <% else %>
-                            <h1> <%= link_to slider.title, slider.link %></h1>
-                        <% end %>
-                        <% if !slider.description.blank? %>
-                            <p> <%=slider.description.first(180) + " (...)" %></p>
-                        <%end%>
-                    </div>
+            <div class="container">
+                <div class="carousel-caption">
+                    <% if slider.link.blank? %>
+                        <h1> <%=slider.title%> </h1>
+                    <% else %>
+                        <h1> <%= link_to slider.title, slider.link %></h1>
+                    <% end %>
+                    <% if !slider.description.blank? %>
+                        <p> <%=slider.description.first(180) + " (...)" %></p>
+                    <%end%>
                 </div>
             </div>
-        <%end%>
+        </div>
+    <%end%>
+  </div>
 
-    </div>
-
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="fa icon-prev" aria-hidden="true"></span>
-        <span class="sr-only"></span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="fa icon-next" aria-hidden="true"></span>
-        <span class="sr-only"></span>
-    </a>
-  </div><!-- /.carousel -->
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="icon-prev"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="icon-next"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 <% end %>
 
 <% content_for :team do %>
