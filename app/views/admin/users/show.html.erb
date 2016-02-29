@@ -15,11 +15,12 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <strong> Role: </strong>
-  <%= @user.role %>
-</p>
-
+<% if policy(@user).create? %>
+  <p>
+    <strong> Role: </strong>
+    <%= @user.role %>
+  </p>
+<% end %>
 
 <%= link_to 'Editar', edit_admin_user_path(@user), class: "btn btn-primary" %>
 

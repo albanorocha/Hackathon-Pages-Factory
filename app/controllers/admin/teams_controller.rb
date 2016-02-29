@@ -6,18 +6,24 @@ class Admin::TeamsController < Admin::AdminController
   # GET /teams
   # GET /teams.json
   def index
+    @teams = policy_scope(Team.where(event: @event))
+    authorize @event, :show?
+
     add_breadcrumb "#{@event.code}", :admin_event_path
     add_breadcrumb "Equipes", :admin_event_teams_path
-    @teams = Team.where(event: @event)
+
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
+    authorize @team
+
     add_breadcrumb "#{@event.code}", :admin_event_path
     add_breadcrumb "Equipes", :admin_event_teams_path
     add_breadcrumb "#{@team.name}", :admin_event_team_path
     @team_users = TeamUser.where(team: @team)
+
   end
 
   # GET /teams/new
@@ -25,11 +31,14 @@ class Admin::TeamsController < Admin::AdminController
     add_breadcrumb "#{@event.code}", :admin_event_path
     add_breadcrumb "Equipes", :admin_event_teams_path
     add_breadcrumb "New Team", :new_admin_event_team_path
-    @team = Team.new
+    @team = Team.new(event: @event)
+    authorize @team
   end
 
   # GET /teams/1/edit
   def edit
+    authorize @team
+
     add_breadcrumb "#{@event.code}", :admin_event_path
     add_breadcrumb "Equipes", :admin_event_teams_path
     add_breadcrumb "Edit Team", :edit_admin_event_team_path
@@ -40,6 +49,9 @@ class Admin::TeamsController < Admin::AdminController
   def create
     @team = Team.new(team_params)
     @team.event = @event
+    @team.team_users.build(user: current_user, role: 0)
+
+    authorize @team
 
     respond_to do |format|
       if @team.save
@@ -56,6 +68,8 @@ class Admin::TeamsController < Admin::AdminController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
+    authorize @team
+
     respond_to do |format|
       if @team.update(team_params)
         format.html { redirect_to admin_event_team_path(@team, code: @event.code) ,
@@ -71,6 +85,8 @@ class Admin::TeamsController < Admin::AdminController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
+    authorize @team
+
     @team.destroy
     respond_to do |format|
       format.html { redirect_to admin_event_teams_url, notice: 'Equipe foi EXCLUÍDO com sucesso.' }

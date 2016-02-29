@@ -6,15 +6,11 @@ class Admin::TeamUsersController < Admin::AdminController
 
   # GET /admin/team_users
   # GET /admin/team_users.json
-  def index
-    @team_users = TeamUser.where(team: params[:event_team_id])
-  end
+  #def index
+  #  @team_users = policy_scope(TeamUser.where(team: @team))
 
-  # GET /admin/team_users/1
-  # GET /admin/team_users/1.json
-  def show
-
-  end
+    #authorize @team, :show
+  # end
 
   # GET /admin/team_users/new
   def new
@@ -23,12 +19,16 @@ class Admin::TeamUsersController < Admin::AdminController
     add_breadcrumb "#{@team.name}", admin_event_team_path(@team, code: @event.code)
     add_breadcrumb "New Member", :new_admin_event_team_user_path
 
-    @team_user = TeamUser.new
+    @team_user = TeamUser.new(team: @team)
     @users = Event.find_by_code(@event.code).users
+
+    authorize @team_user
   end
 
   # GET /admin/team_users/1/edit
   def edit
+    authorize @team_user
+
     add_breadcrumb "#{@event.code}", :admin_event_path
     add_breadcrumb "Equipes", :admin_event_teams_path
     add_breadcrumb "#{@team.name}", admin_event_team_path(@team, code: @event.code)
@@ -43,6 +43,7 @@ class Admin::TeamUsersController < Admin::AdminController
     @team_user.user = User.find(team_user_params[:user])
     @team_user.role = TeamUser.roles[team_user_params[:role]]
     @team_user.team = Team.find(params[:event_team_id])
+    authorize @team_user
 
 
     respond_to do |format|
@@ -60,6 +61,8 @@ class Admin::TeamUsersController < Admin::AdminController
   # PATCH/PUT /admin/team_users/1
   # PATCH/PUT /admin/team_users/1.json
   def update
+    authorize @team_user
+
     respond_to do |format|
       if @team_user.update(team_user_params)
         format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
@@ -75,6 +78,8 @@ class Admin::TeamUsersController < Admin::AdminController
   # DELETE /admin/team_users/1
   # DELETE /admin/team_users/1.json
   def destroy
+    authorize @team_user
+
     @team_user.destroy
     respond_to do |format|
       format.html { redirect_to admin_event_team_path(@team, :code => @event.code),

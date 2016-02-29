@@ -31,10 +31,10 @@ Rails.application.routes.draw do
     resources :events, param: :code do
       member do
         get 'event_subscribe', to: 'events#event_subscribe'
-        resources :event_users, :path => 'users'
+        resources :event_users, :path => 'users', except:[:show]
         resources :teams, as: :event_teams do
-          resources :team_users, :path => 'members', :as => 'users'
-          resources :projects
+          resources :team_users, :path => 'members', :as => 'users', except:[:index, :show]
+          resources :projects, except:[:index, :show]
         end
       end
     end

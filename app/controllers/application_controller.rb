@@ -5,9 +5,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  private
+
+  def user_not_authorized
+    flash[:alert] = "Você não está autorizado a realizar esta ação."
+    redirect_to(request.referrer || admin_root_path)
+  end
+
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up)  << :name
   end
+
 end

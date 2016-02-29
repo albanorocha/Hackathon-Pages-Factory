@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
+  def is_the_role? my_role
+    self.role == my_role.to_s
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable, :registerable, :confirmable, :recoverable
   devise :database_authenticatable, :rememberable, :trackable,

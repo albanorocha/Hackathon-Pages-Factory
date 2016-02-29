@@ -34,4 +34,8 @@ class Event < ActiveRecord::Base
     "#{code}".parameterize
   end
 
+  def is_the_user? user, role
+    !self.event_users.where(user_id: user, role: EventUser.roles[role]).empty?
+  end
+
 end

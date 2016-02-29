@@ -9,10 +9,12 @@
     <%= f.input :email, label: "Email" %>
   </div>
 
+  <% if policy(@user).create? %>
   <div class="form-inputs">
     <%= f.input :role, :collection => User.roles, :label_method => :first,
         :value_method => :first , :label => "Permissão" ,:include_blank => false %>
   </div>
+  <% end %>
 
   <%= link_to "Editar Senha", :action => "edit_password"%>
 

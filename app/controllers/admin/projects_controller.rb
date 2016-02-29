@@ -7,14 +7,14 @@ class Admin::ProjectsController < Admin::AdminController
 
   # GET /admin/projects
   # GET /admin/projects.json
-  def index
-    @projects = Project.where(team: @team)
-  end
+  #def index
+  #  @projects = Project.where(team: @team)
+  #end
 
   # GET /admin/projects/1
   # GET /admin/projects/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /admin/projects/new
   def new
@@ -23,11 +23,15 @@ class Admin::ProjectsController < Admin::AdminController
     add_breadcrumb "#{@team.name}", admin_event_team_path(@team, code: @event.code)
     add_breadcrumb "New Project", :new_admin_event_team_project_path
 
-    @project = Project.new
+    @project = Project.new(team: @team)
+
+    authorize @project
   end
 
   # GET /admin/projects/1/edit
   def edit
+    authorize @project
+
     add_breadcrumb "#{@event.code}", :admin_event_path
     add_breadcrumb "Equipes", :admin_event_teams_path
     add_breadcrumb "#{@team.name}", admin_event_team_path(@team, code: @event.code)
@@ -46,6 +50,8 @@ class Admin::ProjectsController < Admin::AdminController
     @project.team = @team
     @project.path = @project.name.parameterize
 
+    authorize @project
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to edit_admin_event_team_project_path(@project, :code => @event.code,
@@ -61,6 +67,8 @@ class Admin::ProjectsController < Admin::AdminController
   # PATCH/PUT /admin/projects/1
   # PATCH/PUT /admin/projects/1.json
   def update
+    authorize @project
+
     @project.path = @project.name.parameterize
     respond_to do |format|
       if @project.update_attributes(project_params)

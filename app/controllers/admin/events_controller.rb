@@ -7,23 +7,29 @@ class Admin::EventsController < Admin::AdminController
   def index
     #@events = Event.all
     @events = policy_scope(Event)
+    authorize @events
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
     add_breadcrumb "#{@event.code}", :admin_event_path
+    authorize @event
   end
 
   # GET /events/new
   def new
     add_breadcrumb "Novo Evento", :new_admin_event_path
     @event = Event.new
+    authorize @event
+
     @event.build_image
   end
 
   # GET /events/1/edit
   def edit
+    authorize @event
+
     add_breadcrumb "#{@event.code}", :admin_event_path
     add_breadcrumb "Edit Evento", :edit_admin_event_path
     if @event.image.nil?
@@ -32,6 +38,8 @@ class Admin::EventsController < Admin::AdminController
   end
 
   def event_subscribe
+    authorize @event
+
     @event.users << current_user
     respond_to do |format|
       if @event.save
@@ -47,7 +55,11 @@ class Admin::EventsController < Admin::AdminController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = Event.new()
+    authorize @event
+
+    @event = Event.new(permitted_attributes(@event))
+
     @event.code.upcase!
 
     if @event.image.nil?
@@ -72,8 +84,10 @@ class Admin::EventsController < Admin::AdminController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    authorize @event
+
     respond_to do |format|
-      if @event.update(event_params)
+      if @event.update(permitted_attributes(@event))
         @event.code.upcase!
         format.html { redirect_to [:admin, @event], notice: 'Evento foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: [:admin, @event] }
@@ -87,6 +101,8 @@ class Admin::EventsController < Admin::AdminController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    authorize @event
+
     @event.destroy
     respond_to do |format|
       format.html { redirect_to admin_events_url, notice: 'Evento foi EXCLUÍDO com sucesso.' }

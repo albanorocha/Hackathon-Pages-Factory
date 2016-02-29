@@ -62,7 +62,7 @@
                   <p class="centered"><a>
                   <%= image_tag("ui-danro.jpg", class: "img-circle",width:"60" ) %></a></p>
                   <h5 class="centered">
-                    <%= current_user.name %>
+                    <%= link_to current_user.name, admin_user_path(current_user) %>
                     <br>
                     <span class="label label-warning label-mini"><%= current_user.role %></span>
                   </h5>
@@ -75,12 +75,14 @@
                      <% end %>
                   </li>
 
+                  <% if policy(current_user).index? %>
                   <li class="">
                     <%= link_to(admin_users_path) do %>
                        <i class="fa fa-user-md"></i>
                        <span>Usuários</span>
                     <% end %>
                   </li>
+                  <% end %>
 
                   <li class="">
                      <%= link_to(admin_home_configuration_path) do %>
