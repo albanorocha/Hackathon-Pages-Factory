@@ -38,4 +38,8 @@ class Event < ActiveRecord::Base
     !self.event_users.where(user_id: user, role: EventUser.roles[role]).empty?
   end
 
+  def self.create_code
+    number = sprintf '%05d', (Event.last.id + 1)
+    "MH-" + number
+  end
 end

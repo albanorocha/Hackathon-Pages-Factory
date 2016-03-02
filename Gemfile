@@ -28,6 +28,7 @@ gem "mini_magick"
 gem 'geocoder'
 gem "breadcrumbs_on_rails"
 gem 'cloudinary'
+gem 'will_paginate', '~> 3.0.6'
 group :development do
   gem 'better_errors'
   gem 'rails_layout'

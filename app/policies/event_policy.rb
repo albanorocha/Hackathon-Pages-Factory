@@ -12,7 +12,7 @@ class EventPolicy < ApplicationPolicy
 
   def permitted_attributes
     if user.admin? or record.event_users.find_by_user_id(user).organizador?
-      [:code, :name, :date, :address, :description,
+      [:name, :date, :address, :description,
         :release_sign_up, :published, image_attributes: [:image]]
     else
       []

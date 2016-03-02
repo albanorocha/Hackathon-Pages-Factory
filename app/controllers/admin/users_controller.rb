@@ -5,7 +5,7 @@ class Admin::UsersController < Admin::AdminController
   # GET /admin/users
   # GET /admin/users.json
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User.paginate(:page => params[:page], :per_page => 10).order('name ASC'))
     authorize @users
   end
 

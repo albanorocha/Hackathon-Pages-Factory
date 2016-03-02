@@ -6,7 +6,7 @@ class Admin::EventsController < Admin::AdminController
   # GET /events.json
   def index
     #@events = Event.all
-    @events = policy_scope(Event)
+    @events = policy_scope(Event.paginate(:page => params[:page], :per_page => 9).order('created_at DESC'))
     authorize @events
   end
 
@@ -20,7 +20,7 @@ class Admin::EventsController < Admin::AdminController
   # GET /events/new
   def new
     add_breadcrumb "Novo Evento", :new_admin_event_path
-    @event = Event.new
+    @event = Event.new(code: Event.create_code)
     authorize @event
 
     @event.build_image
@@ -60,6 +60,7 @@ class Admin::EventsController < Admin::AdminController
 
     @event = Event.new(permitted_attributes(@event))
 
+    @event.code = Event.create_code
     @event.code.upcase!
 
     if @event.image.nil?
@@ -118,7 +119,7 @@ class Admin::EventsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:code, :name, :date, :address, :description,
+      params.require(:event).permit(:name, :date, :address, :description,
         :release_sign_up, :published, image_attributes: [:image])
     end
 end

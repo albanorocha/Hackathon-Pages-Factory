@@ -10,7 +10,6 @@
        <div class="row">
 
         <% @projects.each do |project| %>
-          <% if project.team.event.published %>
                 <div class="portfolio-items">
                     <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
                         <div class="recent-work-wrap">
@@ -26,10 +25,12 @@
                             </div>
                         </div>
                     </div><!--/.portfolio-item-->
-
-            <%end%>
         <%end%>
                          </div>
         </div>
   </section><!--/#portfolio-item-->
+
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 "> <%= will_paginate @projects %> </div>
+  </div>
 </div>

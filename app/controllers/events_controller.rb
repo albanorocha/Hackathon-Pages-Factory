@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show]
 
   def index
-    @events = Event.all
+    @events = Event.where(published: true).paginate(:page => params[:page], :per_page => 6)
+      .order('created_at DESC')
   end
 
   def show
@@ -11,7 +12,8 @@ class EventsController < ApplicationController
   end
 
   def projects
-    @projects = Project.all
+    @projects = Project.joins(team: :event).where(events: {published: true})
+      .paginate(:page => params[:page], :per_page => 6).order('created_at DESC')
   end
 
   private
