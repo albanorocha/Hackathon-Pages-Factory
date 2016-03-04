@@ -33,7 +33,9 @@ a, a:hover, a:focus {
 }
 
 
-
+.user h5{
+    color: #fff;
+}
 
 #container {
     width: 100%;

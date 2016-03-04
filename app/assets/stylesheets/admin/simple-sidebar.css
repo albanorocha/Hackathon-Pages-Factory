@@ -37,6 +37,10 @@
     width: 250px;
 }
 
+.container{
+    width: auto;
+}
+
 #page-content-wrapper {
     width: 100%;
     position: absolute;
@@ -116,6 +120,7 @@
 
     #page-content-wrapper {
         padding: 20px;
+        padding-top: 70px;
         position: relative;
     }
 

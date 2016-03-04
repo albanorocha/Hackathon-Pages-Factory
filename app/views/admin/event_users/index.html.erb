@@ -1,15 +1,19 @@
 <div class="container">
   <div class="row centered">
-      <h2 style="color:#f0ad4e"> <%= link_to new_admin_event_user_path do %> 
+      <h2 style="color:#f0ad4e"> <%= link_to new_admin_event_user_path, class: "btn btn-primary" do %> 
         <i class="fa fa-plus-circle"></i> Novo Participante
       <% end %>
       </h2>
       <hr>
    </div>
 
-<div class="row col-lg-6 col-lg-offset-3 table-responsive">
+<div class="row col-lg-6 col-lg-offset-3 ">
 
-<table class="table table-hover", style="background:#fff">
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><b>Eventos</b></div>
+
+<table class="table table-hover table-responsive", style="background:#fff">
   <thead>
     <tr>
       <th>Usuário</th>
@@ -45,10 +49,13 @@
     <% end %>
   </tbody>
 </table>
-<p class="pull-left">
+
+</div>
+<p class="pull-right">
 <%= link_to 'Evento', admin_event_path(@event.code) , class: "btn btn-default" %>
 </p>
 </div>
-</div>
+
 
 </div>
+

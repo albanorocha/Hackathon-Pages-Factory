@@ -54,13 +54,15 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-                   <div id="sidebar-wrapper"  style="background:#424a5d">
+                   <div id="sidebar-wrapper" class="user"  style="background:#424a5d">
             <ul class="sidebar-nav">
                <p class="centered"><a>
                 <br><br><br><br>
+                <%= link_to admin_user_path(current_user) do %>
                <%= image_tag("ui-danro.jpg", class: "img-circle",width:"70" ) %></a></p>
+               <%end%>
                <h5 class="centered">
-                 <b style="color: white"><%= link_to current_user.name, admin_user_path(current_user) %></b>
+                 <b><%= current_user.name %></b>
                  <br>
                  <span class="label label-warning label-mini"><%= current_user.role %></span>
 
@@ -102,25 +104,28 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                              <%= render 'layouts/messages' %>
-                              <div class="container">
+            <div class="container">
                               <div class="row ">
                               <ol class="breadcrumb">
                                 <%= render_breadcrumbs :tag => :li, :separator => "" %>
                               </ol>
                                 </div>
+
+                              <div class="row ">
+                                <%= render 'layouts/messages' %>
                               </div>
-                              <%= yield %>
 
-                              <%= render '/layouts/form_back' %>
-
+                              <div class="row ">
+                                <%= yield %>
+                              </div>
+                              <div class="row ">
+                                <%= render '/layouts/form_back' %>                               
+                              </div>
+                              
                   <!--main content end-->
-                    </div>
                 </div>
             </div>
-        </div>
+       
         <!-- /#page-content-wrapper -->
 
         <!--footer start-->
@@ -132,6 +137,8 @@
                 </a>
             </div>
         </footer>
+
+         </div>
         <!--footer end-->
    <%= javascript_include_tag 'administrator', 'data-turbolinks-track' => true %>
 

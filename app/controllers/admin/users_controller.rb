@@ -85,7 +85,7 @@ class Admin::UsersController < Admin::AdminController
 
     respond_to do |format|
       if @user.update(permitted_attributes(@user))
-        format.html { redirect_to admin_user_path, notice: 'Usuário foi ATUALIZADO com sucesso.' }
+        format.html { redirect_to admin_users_path, notice: 'Usuário foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: [:admin, @user] }
       else
         format.html { render :edit }

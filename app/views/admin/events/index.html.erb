@@ -1,8 +1,8 @@
 <div class="container">
   <% if policy(Event).create? %>
   <div class="row centered">
-      <h2> <%= link_to new_admin_event_path do %>
-        <i class="fa fa-plus-circle"></i> Evento
+      <h2> <%= link_to new_admin_event_path, class: "btn btn-primary" do %>
+        <i class="fa fa-plus-circle"></i> Novo Evento
       <% end %>
       </h2>
       <hr>
@@ -10,16 +10,20 @@
   <% end %>
 
 
-<div class="row col-lg-8 col-lg-offset-2 table-responsive">
+<div class="row col-lg-8 col-lg-offset-2">
 
-<table class="table table-hover", style="background:#fff">
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><b>Eventos</b></div>
+
+<table class="table table-hover table-responsive", style="background:#fff">
   <thead>
     <tr>
       <th>Código</th>
       <th>Nome</th>
       <th>Data</th>
-      <th>Inscrições</th>
-      <th>Publicado</th>
+      <th>Insc.</th>
+      <th>Publ.</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -62,6 +66,8 @@
     <% end %>
   </tbody>
 </table>
+</div>
+
 </div>
 
 <div class="row">

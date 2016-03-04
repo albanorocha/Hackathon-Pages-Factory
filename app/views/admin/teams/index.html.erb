@@ -1,21 +1,19 @@
 <div class="container">
   <div class="row centered">
-      <h2> <%= link_to new_admin_event_team_path do %> 
-        <i class="fa fa-plus-circle"></i> Equipe
+      <h2> <%= link_to new_admin_event_team_path, class: "btn btn-primary" do %> 
+        <i class="fa fa-plus-circle"></i> Nova Equipe
       <% end %>
       </h2>
       <hr>
    </div>
 
-<div class="row col-lg-4 col-lg-offset-4 table-responsive">
+<div class="row col-lg-4 col-lg-offset-4 ">
+
+<div class="panel panel-info table-responsive">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><b>Equipes</b></div>
 
 <table class="table table-hover", style="background:#fff">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
 
   <tbody>
     <% @teams.each do |team| %>
@@ -32,5 +30,5 @@
   </tbody>
 </table>
 </div>
-
+</div>
 </div>

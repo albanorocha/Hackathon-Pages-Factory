@@ -1,4 +1,4 @@
-/*---LEFT BAR ACCORDION----*/
+/*---LEFT BAR ACCORDION---
 
 var Script = function () {
 
@@ -30,3 +30,5 @@ var Script = function () {
 
 
 }();
+
+-*/
