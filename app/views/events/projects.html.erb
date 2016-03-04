@@ -30,7 +30,11 @@
         </div>
   </section><!--/#portfolio-item-->
 
+ <div class="container">
   <div class="row">
-    <div class="col-lg-6 col-lg-offset-3 "> <%= will_paginate @projects %> </div>
+    <div class="text-cente"> <%= will_paginate @projects, renderer: BootstrapPagination::Rails, previous_label: "Voltar", next_label: "Próxima" %> </div>
   </div>
+  </div>
+
+
 </div>

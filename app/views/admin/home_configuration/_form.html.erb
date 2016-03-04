@@ -1,12 +1,14 @@
+
+<% count = 0 %>
 <%= simple_form_for([:admin, @home_configuration], url: admin_home_configuration_path) do |f| %>
   <%= f.error_notification %>
 
     <%= f.simple_fields_for :sliders do |s| %>
+    <% count = count + 1 %>
 
-
-  <div class="row col-lg-12">
-      <h3>Novo Slider </h3>
-      <div class="row col-lg-6 ">
+  <div class="row col-lg-12 well">
+      <h3>Slider <%= count %></h3>
+      <div class="row col-lg-6">
       <div class="form-inputs">
         <%= s.input :title, label: "Título" %>
       </div>
@@ -21,9 +23,9 @@
       </div>
 
       <%= s.simple_fields_for :image do |i| %>
-      <div class="row col-lg-5 col-lg-offset-1 ">
+      <div class="row col-lg-5 col-lg-offset-1">
         <br>
-        <h4 class="centered">Selecione uma imagem </h4>
+        <h4 class="centered">Imagem do slider <%= count %></h4>
         <br>
         <br>
         <div class="form-inputs centered">

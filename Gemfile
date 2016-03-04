@@ -14,6 +14,7 @@ group :development do
   gem 'spring'
 end
 gem 'bootstrap-sass'
+gem 'will_paginate-bootstrap'
 gem 'devise'
 gem 'devise-i18n'
 #gem 'devise_invitable'

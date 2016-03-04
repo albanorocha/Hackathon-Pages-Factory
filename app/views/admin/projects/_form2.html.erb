@@ -26,11 +26,14 @@
   <div class="well row col-lg-12">
     <h2>Imagens do Projeto</h2>
     <hr>
+
+  <% imgs = ["Problema", " Solução", "Equipe"] %>
+
   <% @project.images.each.with_index do |image,index| %>
     <%= f.simple_fields_for :images, image do |i| %>
       <div class="row col-lg-3 col-lg-offset-1">
       <div class="form-inputs centered">
-        <h3><%= "Image #{Project::image_type(index)}" %></h3>
+        <h3><%= imgs[index] %></h3>
         <%= i.input :image, as: :image_preview, input_html: {preview_version: :project_thumb}, label: "< 450 x 350 >" %>
       </div>
       </div>
@@ -41,14 +44,15 @@
 
 
 
-<div class="well row col-lg-12">
+<div class="row col-lg-12">
     <h2>Slider da Página</h2>
   <hr>
+  <% count = 0 %>
   <%= f.simple_fields_for :sliders do |s| %>
+  <% count = count + 1 %>
 
-
-<div class="row col-lg-12">
-    <h3>Novo Slider </h3>
+<div class="row col-lg-12 well">
+    <h3>Slider <%= count %> </h3>
     <div class="row col-lg-6 ">
     <div class="form-inputs">
       <%= s.input :title, label: "Título" %>
@@ -64,9 +68,9 @@
     </div>
 
     <%= s.simple_fields_for :image do |i| %>
-    <div class="row col-lg-5 col-lg-offset-1 ">
+    <div class="row col-lg-5 col-lg-offset-1">
       <br>
-      <h4 class="centered">Selecione uma imagem </h4>
+      <h4 class="centered">Imagem do slider <%= count %> </h4>
       <br>
       <br>
       <div class="form-inputs centered">

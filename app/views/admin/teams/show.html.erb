@@ -29,13 +29,13 @@
         <td>
           <%= link_to edit_admin_event_team_user_path(team_user,
           event_team_id: team_user.team, code: @event.code) do %>
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-pencil btn btn-default btn-xs"></i>
           <% end %>
         </td>
         <td>
           <%= link_to admin_event_team_user_path(team_user,
           event_team_id: team_user.team, code: @event.code), method: :delete, data: { confirm: 'Tem certeza?' } do %>
-            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-trash-o btn btn-default btn-xs"></i>
         <% end %>
         </td>
       </tr>
@@ -65,14 +65,14 @@
         <td><%= team_project.name %></td>
         <td>
           <%= link_to project_path(code: @event.code, project_name: team_project.path),target: "_blank" do %>
-            <i class="fa fa-eye"></i>
+            <i class="fa fa-eye btn btn-default btn-xs"></i>
           <% end %>
         </td>
 
         <td>
           <%= link_to edit_admin_event_team_project_path(team_project,
           event_team_id: team_project.team, code: @event.code) do %>
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-pencil btn btn-default btn-xs"></i>
           <% end %>
         </td>
       </tr>
@@ -97,7 +97,7 @@
 <div class="container">
   <br>
   <div class="well row centered col-lg-10 col-lg-offset-1">
-      <%= link_to 'Editar Time', edit_admin_event_team_path , class: "btn btn-primary btn-sm" %>
+      <%= link_to 'Editar Equipe', edit_admin_event_team_path , class: "btn btn-primary btn-sm" %>
 
    </div>
    </div>

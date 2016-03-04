@@ -7,11 +7,11 @@
       <hr>
    </div>
 
-<div class="row col-lg-6  col-lg-offset-3 ">
+<div class="row col-lg-8  col-lg-offset-2 ">
 
 <div class="panel panel-info">
   <!-- Default panel contents -->
-  <div class="panel-heading"><b>Eventos</b></div>
+  <div class="panel-heading"><b>Usuários</b></div>
 
 <table class="table table-hover table-responsive", style="background:#fff">
   <thead>
@@ -31,17 +31,17 @@
         <td><span class="label label-warning label-mini"><%= user.role %></span></td>
         <td>
           <%= link_to [:admin, user] do %>
-            <i class="fa fa-eye"></i>
+            <i class="fa fa-eye btn btn-default btn-xs"></i>
           <% end %>
         </td>
         <td>
           <%= link_to edit_admin_user_path(user) do %>
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-pencil btn btn-default btn-xs"></i>
           <% end %>
         </td>
         <td>
           <%= link_to [:admin, user], method: :delete, data: { confirm: 'Tem certeza?' } do %>
-            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-trash-o btn btn-default btn-xs"></i>
         <% end %>
         </td>
       </tr>
@@ -50,11 +50,13 @@
 </table>
 </div>
 </div>
+</div>
 
+<div class="container">
 <div class="row">
-  <div class="col-lg-6 col-lg-offset-3 "> <%= will_paginate @users %> </div>
+  <div class="text-center"> <%= will_paginate @users, renderer: BootstrapPagination::Rails, previous_label: "Voltar", next_label: "Próxima"  %> </div>
 </div>
 
 
 
-</div>
+

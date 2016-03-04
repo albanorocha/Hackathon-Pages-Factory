@@ -46,49 +46,58 @@
 
 <div class="container">
     <div class="row text-center">
-        <br>
+        
         <h2>Eventos MedHacker</h2>
         <hr>
     </div>
 
 
-    <section id="portfolio">
+    <section>
+        <div class="container">
         <div class="row">
-
+            <ul class="grid cs-style-3">
         <% @events.each do |event| %>
-            <div class="portfolio-items">
-                    <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-4">
-                        <div class="recent-work-wrap">
+            <li>
+                <figure>
+                    <%= image_tag event.image.image.project.url , class: "img-responsive" %>
+                    <figcaption>
+                        <h3><%= event.name%></h3>
+                        
+                            <span></span>
 
-                            <%= image_tag event.image.image.project.url , class: "img-responsive" %>
-
-                            <div class="overlay text-center">
-                                <div class="recent-work-inner">
-                                    <h3>
-                                        <%= link_to event.name, event_path(code: event.code)%>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--/.portfolio-item-->
-            <%end%>
-            </div>
+                            <%= link_to "Ver Evento", event_path(code: event.code)%>
+                    </figcaption>
+                </figure>
+            </li>
+        <%end%>
+            </ul>
+        </div>
         </div>
     </section><!--/#portfolio-item-->
+
+
+    
+
+
+</div>
+<div class="container">
+<div class="row">
+  <div class="text-center"> <%= will_paginate @events, renderer: BootstrapPagination::Rails, previous_label: "Voltar", next_label: "Próxima" %> </div>
+</div>
 </div>
 
-<div class="row">
-  <div class="col-lg-6 col-lg-offset-3 "> <%= will_paginate @events %> </div>
-</div>
-<hr class="featurette-divider">
+<div class="well">
+
+
 
 <div class="container">
     <div class="row text-center">
-        <br>
+        
         <h2>Conheça e acompanhe o MedHacker</h2>
         <hr>
-         <%= image_tag "http://maps.google.com/maps/api/staticmap?size=2000x200&center=Brazil&sensor=false&zoom=3&scale=4#{Event.events_markers}",  height: "100%", width: "100%"  %>
+         <%= image_tag "http://maps.google.com/maps/api/staticmap?size=2000x200&center=Brazil&sensor=true&zoom=3&scale=4#{Event.events_markers}",  height: "100%", width: "100%", class: "img-thumbnail"  %>
     </div>
 </div>
 
 
+</div>

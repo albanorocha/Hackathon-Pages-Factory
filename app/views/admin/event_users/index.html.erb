@@ -36,12 +36,12 @@
 -->
         <td>
           <%= link_to edit_admin_event_user_path(event_user, :code => @event.code) do %> 
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-pencil btn btn-default btn-xs"></i>
           <% end %>
         </td>        
         <td>
           <%= link_to admin_event_user_path(event_user, :code => @event.code), method: :delete, data: { confirm: 'Tem certeza?' } do %> 
-            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-trash-o btn btn-default btn-xs"></i>
         <% end %>          
         </td>
 

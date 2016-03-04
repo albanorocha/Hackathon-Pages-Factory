@@ -51,14 +51,14 @@
 
         <td>
           <%= link_to admin_event_path(event) do %>
-            <i class="fa fa-eye"></i>
+            <i class="fa fa-eye btn btn-default btn-xs"></i>
           <% end %>
         </td>
 
         <% if policy(event).create? %>
         <td>
           <%= link_to edit_admin_event_path(event) do %>
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-pencil btn btn-default btn-xs"></i>
           <% end %>
         </td>
         <% end %>
@@ -69,9 +69,9 @@
 </div>
 
 </div>
-
-<div class="row">
-  <div class="col-lg-6 col-lg-offset-3 "> <%= will_paginate @users %> </div>
 </div>
 
+<div class="container">
+<div class="row">
+  <div class="text-center"> <%= will_paginate @events, renderer: BootstrapPagination::Rails, previous_label: "Voltar", next_label: "Próxima"  %> </div>
 </div>
