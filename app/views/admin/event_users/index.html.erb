@@ -1,11 +1,18 @@
 <div class="container">
+  <% if policy(@event_users.first).create? %>
   <div class="row centered">
-      <h2 style="color:#f0ad4e"> <%= link_to new_admin_event_user_path, class: "btn btn-primary" do %> 
+      <h2 style="color:#f0ad4e"> <%= link_to new_admin_event_user_path, class: "btn btn-primary" do %>
         <i class="fa fa-plus-circle"></i> Novo Participante
+      <% end %>
+      </h2>
+
+      <h2 style="color:#f0ad4e"> <%= link_to new_manager_admin_event_users_path, class: "btn btn-primary" do %>
+        <i class="fa fa-plus-circle"></i> Novo Organizador
       <% end %>
       </h2>
       <hr>
    </div>
+  <% end %>
 
 <div class="row col-lg-6 col-lg-offset-3 ">
 
@@ -18,7 +25,9 @@
     <tr>
       <th>Usuário</th>
       <th>Tipo</th>
-      <th colspan="3"></th>
+      <% if policy(@event_users.first).create? %>
+      <th colspan="1"></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -27,23 +36,13 @@
       <tr>
         <td><%= event_user.user.email %></td>
         <td><span class="label label-info label-mini"><%= event_user.role %></span></td>
-<!--
+        <% if policy(event_user).create? %>
         <td>
-          <%= link_to  admin_event_user_path(event_user, :code => @event.code) do %> 
-            <i class="fa fa-eye"></i>
-          <% end %>
-        </td>
--->
-        <td>
-          <%= link_to edit_admin_event_user_path(event_user, :code => @event.code) do %> 
-            <i class="fa fa-pencil btn btn-default btn-xs"></i>
-          <% end %>
-        </td>        
-        <td>
-          <%= link_to admin_event_user_path(event_user, :code => @event.code), method: :delete, data: { confirm: 'Tem certeza?' } do %> 
+          <%= link_to admin_event_user_path(event_user, :code => @event.code), method: :delete, data: { confirm: 'Tem certeza?' } do %>
             <i class="fa fa-trash-o btn btn-default btn-xs"></i>
-        <% end %>          
+        <% end %>
         </td>
+        <% end %>
 
       </tr>
     <% end %>

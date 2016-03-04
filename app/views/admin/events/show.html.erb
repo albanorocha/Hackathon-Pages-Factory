@@ -16,7 +16,7 @@
 
 
 <div class="col-lg-5 col-lg-offset-1">
-  <h4>Detalhes do Evento</h4>    
+  <h4>Detalhes do Evento</h4>
   <p><%= @event.description %></p>
   <p><b>Publicado:</b>
         <% if @event.published %>
@@ -35,13 +35,14 @@
 
        <br>
     <p class="centered">
-      
-      <%= link_to 'Editar', edit_admin_event_path(@event) , class: "btn btn-primary" %> &nbsp;
-      
 
-      
+      <% if policy(@event).edit? %>
+      <%= link_to 'Editar', edit_admin_event_path(@event) , class: "btn btn-primary" %> &nbsp;
+      <% end %>
+
+
       <%= link_to 'Participantes', admin_event_users_path, class: "btn btn-info" %>  &nbsp;
-      
+
 
       <%= link_to 'Equipes', admin_event_teams_path, class: "btn btn-warning" %>
     </p>

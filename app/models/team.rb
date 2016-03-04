@@ -5,6 +5,9 @@ class Team < ActiveRecord::Base
 
   belongs_to :event
 
+  validates :name,  presence: true
+
+
   def is_the_user_there? user
     !self.users.where(id: user).empty?
   end

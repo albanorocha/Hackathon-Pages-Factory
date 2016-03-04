@@ -38,16 +38,17 @@ class TeamPolicy < ApplicationPolicy
   end
 
   def new?
-    Pundit.policy!(user, record.event).show?
+    record.event.is_the_user? user, :organizador or
+    record.event.is_the_user? user, :medhacker  #Pundit.policy!(user, record.event).show?
   end
 
   def create?
-    Pundit.policy!(user, record.event).show?
+    record.event.is_the_user? user, :organizador or
+    record.event.is_the_user? user, :medhacker
   end
 
   def destroy?
     user.admin? or
-    record.is_the_user_there? user or
     record.event.is_the_user? user, :organizador
   end
 end

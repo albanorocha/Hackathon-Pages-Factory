@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   enum role: [:user, :manager, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
+  validates :name, :password, :email, presence: true
 
   has_many :event_users
   has_many :events, :through => :event_users

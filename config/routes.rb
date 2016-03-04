@@ -31,7 +31,14 @@ Rails.application.routes.draw do
     resources :events, param: :code do
       member do
         get 'event_subscribe', to: 'events#event_subscribe'
-        resources :event_users, :path => 'users', except:[:show]
+
+        resources :event_users, :path => 'users', except:[:show, :edit, :update] do
+          collection do
+            get 'new_manager', to: 'event_users#new_manager'
+            post 'create_manager', to: 'event_users#create_manager'
+          end
+        end
+
         resources :teams, as: :event_teams do
           resources :team_users, :path => 'members', :as => 'users', except:[:index, :show]
           resources :projects, except:[:index, :show]

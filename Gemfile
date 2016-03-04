@@ -30,6 +30,7 @@ gem 'geocoder'
 gem "breadcrumbs_on_rails"
 gem 'cloudinary'
 gem 'will_paginate', '~> 3.0.6'
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 group :development do
   gem 'better_errors'
   gem 'rails_layout'

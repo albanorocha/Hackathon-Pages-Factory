@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
 
+  validates :name, :date, :address, :description, presence: true
+
 
   accepts_nested_attributes_for :image, :reject_if => :all_blank
 
@@ -39,7 +41,12 @@ class Event < ActiveRecord::Base
   end
 
   def self.create_code
-    number = sprintf '%05d', (Event.last.id + 1)
+    if Event.all.empty?
+      number = sprintf '%05d', 1
+    else
+      number = sprintf '%05d', (Event.last.code[3..7].to_i + 1)
+    end
+
     "MH-" + number
   end
 end

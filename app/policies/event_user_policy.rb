@@ -8,25 +8,25 @@ class EventUserPolicy < ApplicationPolicy
 
   def permitted_attributes
     if user.admin? or user.event_users.find_by_event_id(record.event).organizador?
-      [:user, :role]
+      [:user]
     else
       []
     end
   end
 
   def index?
-    user.admin? or user.manager? or Pundit.policy!(user, record.first.event).show?
-  end
-
-  def edit?
-    user.admin? or record.event.is_the_user? user, :organizador
-  end
-
-  def update?
-    user.admin? or record.event.is_the_user? user, :organizador
+    user.admin? or Pundit.policy!(user, record.first.event).show?
   end
 
   def new?
+    user.admin? or record.event.is_the_user? user, :organizador
+  end
+
+  def new_manager?
+    user.admin? or record.event.is_the_user? user, :organizador
+  end
+
+  def create_manager?
     user.admin? or record.event.is_the_user? user, :organizador
   end
 

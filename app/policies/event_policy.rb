@@ -1,10 +1,9 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.admin? or user.manager?
+      if user.admin?
         scope.all
       else
-        #scope.where(published: true)
         scope.joins(:event_users).where(["event_users.role = ? AND event_users.user_id = ? OR published = ?", 1, user, 'true']).uniq
       end
     end
@@ -24,7 +23,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? or user.manager? or record.published or record.is_the_user? user, :organizador
+    user.admin? or record.published or record.is_the_user? user, :organizador
   end
 
   def edit?

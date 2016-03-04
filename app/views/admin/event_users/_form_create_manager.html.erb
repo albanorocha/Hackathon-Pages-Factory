@@ -1,7 +1,7 @@
-<%= simple_form_for([:admin, @event_user]) do |f| %>
+<%= simple_form_for([:admin, @event_user], url: create_manager_admin_event_users_path(@event_user,:code => @event.code)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+ <div class="form-inputs">
     <%= f.input :user, :collection => @users, :label_method => :name,
         :value_method => :id , :label => "Usuário" ,:include_blank => false %>
   </div>

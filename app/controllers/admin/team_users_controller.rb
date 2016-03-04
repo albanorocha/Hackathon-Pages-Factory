@@ -52,7 +52,9 @@ class Admin::TeamUsersController < Admin::AdminController
           notice: 'Membro de Equipe foi CRIADO com sucesso.' }
         format.json { render :show, status: :created, location: @team_user }
       else
-        format.html { render :new }
+        format.html {
+            flash[:Error] = "Usuário já existe."
+            redirect_to  new_admin_event_team_user_path(@team, :code => @event.code)}
         format.json { render json: @team_user.errors, status: :unprocessable_entity }
       end
     end
