@@ -85,13 +85,15 @@
                 </li>
                 <% end %>
 
+              <% if policy(current_user).index? %>
                <li class="">
                   <%= link_to(admin_home_configuration_path) do %>
                       <i class="fa fa-cogs"></i>
                       <span>Página Inicial</span>
                   <% end %>
                </li>
-
+               <% end %>
+               
               <li class="">
                   <%= link_to equipes_admin_user_path(current_user) do %>
                       <i class="fa fa-users"></i>

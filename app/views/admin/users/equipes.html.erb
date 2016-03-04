@@ -15,6 +15,8 @@
   <tbody>
     <% @teams.each do |team| %>
       <tr>
+        
+        <td><%= team.event.code %></td>
         <td><%= team.name %></td>
 
         <td>
