@@ -6,7 +6,7 @@
 
 <div class="row col-lg-4 col-lg-offset-4">
 <p>
-  <strong> Name: </strong>
+  <strong> Nome: </strong>
   <%= @user.name %>
 </p>
 
@@ -17,7 +17,7 @@
 
 <% if policy(@user).create? %>
   <p>
-    <strong> Role: </strong>
+    <strong> Permissão: </strong>
     <%= @user.role %>
   </p>
 <% end %>

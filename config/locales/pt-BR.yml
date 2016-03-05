@@ -1,1 +1,5 @@
 pt-BR:
+
+  simple_form:
+    error_notification:
+      user: "Por favor, revise os problemas abaixo:"
