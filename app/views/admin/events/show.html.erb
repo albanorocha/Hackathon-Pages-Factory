@@ -34,9 +34,15 @@
   </p>
   <br>
   <% if @event.release_sign_up %>
-  <div class="text-center">
-    <%= link_to 'Inscreva-se', event_subscribe_admin_event_path,  class: "btn btn-success btn-lg" %>
-  </div>
+    <% if @event.there_is_the_user? current_user %>
+      <div class="text-center">
+        <button type="button" class="btn btn-default btn-lg" disabled="disabled"> Inscrito </button>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <%= link_to 'Inscreva-se', event_subscribe_admin_event_path,  class: "btn btn-success btn-lg" %>
+      </div>
+    <% end %>
   <%end%>
 
        <br>

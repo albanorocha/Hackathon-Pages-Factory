@@ -87,6 +87,8 @@ class Admin::ProjectsController < Admin::AdminController
   # DELETE /admin/projects/1
   # DELETE /admin/projects/1.json
   def destroy
+    authorize @project
+
     @project.destroy
     respond_to do |format|
       format.html { redirect_to admin_event_team_path(@team, :code => @event.code),

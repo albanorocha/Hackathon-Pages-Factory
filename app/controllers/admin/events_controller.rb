@@ -40,13 +40,16 @@ class Admin::EventsController < Admin::AdminController
   def event_subscribe
     authorize @event
 
-    @event.users << current_user
+    @event.event_users.build(user: current_user, role: EventUser.roles[:medhacker])
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to [:admin, @event], notice: 'Inscrição realizada com sucesso.' }
         format.json { render :show, status: :created, location: [:admin, @event] }
       else
-        format.html { render :new }
+        format.html {
+          flash[:Error] = "Você já está inscrito no evento."
+          redirect_to admin_event_path(:code => @event.code) }
         format.json { render json: [:admin, @event].errors, status: :unprocessable_entity }
       end
     end

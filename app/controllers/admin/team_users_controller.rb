@@ -53,7 +53,7 @@ class Admin::TeamUsersController < Admin::AdminController
         format.json { render :show, status: :created, location: @team_user }
       else
         format.html {
-            flash[:Error] = "Usuário já existe."
+            flash[:Error] = "Usuário já está cadastrado no time."
             redirect_to  new_admin_event_team_user_path(@team, :code => @event.code)}
         format.json { render json: @team_user.errors, status: :unprocessable_entity }
       end
@@ -82,11 +82,19 @@ class Admin::TeamUsersController < Admin::AdminController
   def destroy
     authorize @team_user
 
-    @team_user.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
-        notice: 'Membro de Equipe foi EXCLUÍDO com sucesso.' }
-      format.json { head :no_content }
+    if @team.only_one_user?
+      respond_to do |format|
+        format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
+          alert: 'A equipe não pode ficar sem membro!' }
+        format.json { head :no_content }
+      end
+    else
+      @team_user.destroy
+      respond_to do |format|
+        format.html { redirect_to admin_event_team_path(@team, :code => @event.code),
+          notice: 'Membro de Equipe foi EXCLUÍDO com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end
 

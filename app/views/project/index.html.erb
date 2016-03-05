@@ -34,7 +34,7 @@
                         <h1> <%= link_to slider.title, slider.link %></h1>
                     <% end %>
                     <% if !slider.description.blank? %>
-                        <p> <%=slider.description.first(180) + " (...)" %></p>
+                        <p> <%=slider.description %></p>
                     <%end%>
                 </div>
             </div>
@@ -89,11 +89,11 @@
 
 <% content_for :networks do %>
   <%= link_to @project.facebook_link, target: '_blank' do %>
-    <i class="fa fa-facebook-official fa-3x"></i> 
+    <i class="fa fa-facebook-official fa-3x"></i>
 
   <% end %>
   <%= link_to @project.instagram_link, target: '_blank' do %>
-    <i class="fa fa-instagram fa-3x"></i> 
+    <i class="fa fa-instagram fa-3x"></i>
   <% end %>
 
   <%= link_to @project.youtube_link, target: '_blank' do %>

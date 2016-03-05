@@ -2,7 +2,8 @@ class TeamUser < ActiveRecord::Base
   enum role: [:membro, :mentor]
   after_initialize :set_default_role, :if => :new_record?
 
-  validates :user, uniqueness: true
+  validates :user, :uniqueness => {:scope => :team_id}
+
 
 
   belongs_to :user

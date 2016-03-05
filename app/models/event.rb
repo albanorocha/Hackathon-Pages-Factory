@@ -40,6 +40,12 @@ class Event < ActiveRecord::Base
     !self.event_users.where(user_id: user, role: EventUser.roles[role]).empty?
   end
 
+  def there_is_the_user? user
+    self.is_the_user? user, :organizador or
+    self.is_the_user? user, :medhacker
+  end
+
+
   def self.create_code
     if Event.all.empty?
       number = sprintf '%05d', 1
@@ -48,5 +54,9 @@ class Event < ActiveRecord::Base
     end
 
     "MH-" + number
+  end
+
+  def only_one_organizer?
+    self.event_users.where(role: EventUser.roles[:organizador]).count == 1
   end
 end

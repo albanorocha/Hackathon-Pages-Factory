@@ -55,8 +55,8 @@ class Admin::EventUsersController < Admin::AdminController
         format.json { render :show, status: :created, location:[:admin, @event_user] }
       else
         format.html {
-            flash[:Error] = "Usuário já existe."
-            redirect_to admin_event_users_path(:code => @event.code)}
+            flash[:Error] = "O Medhacker já está inscrito no evento."
+            redirect_to new_admin_event_user_path(:code => @event.code)}
         format.json { render json: [:admin, @event_user].errors, status: :unprocessable_entity }
       end
     end
@@ -79,8 +79,8 @@ class Admin::EventUsersController < Admin::AdminController
         format.json { render :show, status: :created, location:[:admin, @event_user] }
       else
         format.html {
-            flash[:Error] = "Usuário já existe."
-            redirect_to admin_event_users_path(:code => @event.code)}
+            flash[:Error] = "O Organizador já está inscrito no evento."
+            redirect_to new_manager_admin_event_users_path(:code => @event.code)}
         format.json { render json: [:admin, @event_user].errors, status: :unprocessable_entity }
       end
     end
@@ -91,10 +91,17 @@ class Admin::EventUsersController < Admin::AdminController
   def destroy
     authorize @event_user
 
-    @event_user.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_event_users_url, notice: 'Paticipante foi EXCLUÍDO com sucesso.' }
-      format.json { head :no_content }
+    if @event.only_one_organizer? and @event_user.organizador?
+      respond_to do |format|
+        format.html { redirect_to admin_event_users_url, alert: 'O evento não pode ficar sem organizador!' }
+        format.json { head :no_content }
+      end
+    else
+      @event_user.destroy
+      respond_to do |format|
+        format.html { redirect_to admin_event_users_url, notice: 'Paticipante foi EXCLUÍDO com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end
 

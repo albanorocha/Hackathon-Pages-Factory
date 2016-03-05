@@ -1,13 +1,22 @@
 class Project < ActiveRecord::Base
   belongs_to :team
+  belongs_to :event
+
   has_many :sliders, -> { order 'created_at asc' }, :as => :sliderable, dependent: :destroy
 
   has_many :images, -> { order 'created_at asc' }, :as => :imageable, dependent: :destroy
+
+
 
   accepts_nested_attributes_for :sliders
   accepts_nested_attributes_for :images
 
   validates :name, :description, :problem, :solution, :team_description, presence: true
+  validates :name, uniqueness: true
+
+  #def event
+  #  self.team.event
+  #end
 
   def create_images
     problem_image = self.images.build

@@ -22,9 +22,9 @@
       <th>Código</th>
       <th>Nome</th>
       <th>Data</th>
-      <th>Insc.</th>
-      <th>Publ.</th>
-      <th>Sub.</th>
+      <th>Inscrição liberada</th>
+      <th>Publicado</th>
+      <th>Inscrito</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -50,9 +50,9 @@
             <i class="fa fa-times" style="color: red"></i>
           <% end %>
         </td>
-        
+
         <td>
-          <% if event.release_sign_up %>
+          <% if event.there_is_the_user? current_user %>
             <i class="fa fa-circle"></i>
           <% else %>
             <i class="fa fa-circle-thin"></i>

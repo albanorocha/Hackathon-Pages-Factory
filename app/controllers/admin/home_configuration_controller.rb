@@ -14,7 +14,7 @@ class Admin::HomeConfigurationController < Admin::AdminController
         format.html { redirect_to admin_home_configuration_path, notice: 'Página Home foi ATUALIZADO com sucesso.' }
         format.json { render :show, status: :ok, location: [:admin, @home_configuration] }
       else
-        format.html { render :edit }
+        format.html { render :index }
         format.json { render json: [:admin, @home_configuration].errors, status: :unprocessable_entity }
       end
     end

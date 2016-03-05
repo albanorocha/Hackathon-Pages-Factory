@@ -12,4 +12,8 @@ class Team < ActiveRecord::Base
     !self.users.where(id: user).empty?
   end
 
+  def only_one_user?
+    self.users.count == 1
+  end
+
 end
