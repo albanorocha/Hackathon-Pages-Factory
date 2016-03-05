@@ -1,15 +1,15 @@
 <div class="container">
   <% if policy(@event_users.first).create? %>
   <div class="row centered">
-      <h2 style="color:#f0ad4e"> <%= link_to new_admin_event_user_path, class: "btn btn-primary" do %>
+      <span style="color:#f0ad4e"> <%= link_to new_admin_event_user_path, class: "btn btn-primary" do %>
         <i class="fa fa-plus-circle"></i> Novo Participante
       <% end %>
-      </h2>
+      </span> &nbsp;
 
-      <h2 style="color:#f0ad4e"> <%= link_to new_manager_admin_event_users_path, class: "btn btn-primary" do %>
+      <span style="color:#f0ad4e"> <%= link_to new_manager_admin_event_users_path, class: "btn btn-info" do %>
         <i class="fa fa-plus-circle"></i> Novo Organizador
       <% end %>
-      </h2>
+      </span>
       <hr>
    </div>
   <% end %>

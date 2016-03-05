@@ -24,7 +24,8 @@
       <th>Data</th>
       <th>Insc.</th>
       <th>Publ.</th>
-      <th colspan="3"></th>
+      <th>Sub.</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -32,6 +33,7 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.code %></td>
+
         <td><%= event.name %></td>
         <td><%= event.date %></td>
         <td>
@@ -46,6 +48,14 @@
             <i class="fa fa-check" style="color: green"></i>
           <% else %>
             <i class="fa fa-times" style="color: red"></i>
+          <% end %>
+        </td>
+        
+        <td>
+          <% if event.release_sign_up %>
+            <i class="fa fa-circle"></i>
+          <% else %>
+            <i class="fa fa-circle-thin"></i>
           <% end %>
         </td>
 

@@ -54,7 +54,9 @@ class Admin::EventUsersController < Admin::AdminController
             notice: 'Paticipante foi CRIADO com sucesso.' }
         format.json { render :show, status: :created, location:[:admin, @event_user] }
       else
-        format.html { render :new }
+        format.html {
+            flash[:Error] = "Usuário já existe."
+            redirect_to admin_event_users_path(:code => @event.code)}
         format.json { render json: [:admin, @event_user].errors, status: :unprocessable_entity }
       end
     end
@@ -78,7 +80,7 @@ class Admin::EventUsersController < Admin::AdminController
       else
         format.html {
             flash[:Error] = "Usuário já existe."
-            redirect_to new_manager_admin_event_users_path(:code => @event.code)}
+            redirect_to admin_event_users_path(:code => @event.code)}
         format.json { render json: [:admin, @event_user].errors, status: :unprocessable_entity }
       end
     end

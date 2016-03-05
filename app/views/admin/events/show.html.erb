@@ -32,20 +32,26 @@
           <i class="fa fa-times" style="color: red"></i>
         <% end %>
   </p>
+  <br>
+  <% if @event.release_sign_up %>
+  <div class="text-center">
+    <%= link_to 'Inscreva-se', event_subscribe_admin_event_path,  class: "btn btn-success btn-lg" %>
+  </div>
+  <%end%>
 
        <br>
-    <p class="centered">
+    <div class="well centered">
 
       <% if policy(@event).edit? %>
       <%= link_to 'Editar', edit_admin_event_path(@event) , class: "btn btn-primary" %> &nbsp;
       <% end %>
 
 
-      <%= link_to 'Participantes', admin_event_users_path, class: "btn btn-info" %>  &nbsp;
+      <%= link_to 'Usuários do Evento', admin_event_users_path, class: "btn btn-info" %>  &nbsp;
 
 
       <%= link_to 'Equipes', admin_event_teams_path, class: "btn btn-warning" %>
-    </p>
+    </div>
 </div>
 
 <div class="col-lg-4 col-lg-offset-1">

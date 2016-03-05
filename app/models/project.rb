@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :sliders
   accepts_nested_attributes_for :images
 
+  validates :name, :description, :problem, :solution, :team_description, presence: true
+
   def create_images
     problem_image = self.images.build
     File.open('./public/projects/problem_default.jpg') do |f|
