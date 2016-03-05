@@ -41,6 +41,11 @@
     width: auto;
 }
 
+#page-content-wrapper {
+    padding: 20px;
+    padding-top: 70px;
+    position: relative;
+}
 
 
 /* Sidebar Styles */
