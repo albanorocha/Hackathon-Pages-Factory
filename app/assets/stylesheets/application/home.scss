@@ -63,14 +63,23 @@ left: 20%;
   }
 }
 
-a {
+.carousel a {
     color: #fff;
     text-decoration: none;
 }
 
-a:hover, a:focus {
+.carousel a:hover, a:focus {
     color: #fff;
     text-decoration: underline;
+}
+
+.carousel-caption {
+    color: #fff;
+    text-align: center;
+    text-shadow: 0px 0px 7px rgba(0,0,0,.6);
+    
+    font-size: 21px;
+
 }
 
 
