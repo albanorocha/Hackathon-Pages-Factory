@@ -36,28 +36,15 @@
   <% if @event.release_sign_up %>
     <% if @event.there_is_the_user? current_user %>
       <div class="text-center">
-        <button type="button" class="btn btn-default btn-lg" disabled="disabled"> Inscrito </button>
+        <button type="button" class="btn btn-default btn-lg btn-block" disabled="disabled"> Inscrito </button>
       </div>
     <% else %>
       <div class="text-center">
-        <%= link_to 'Inscreva-se', event_subscribe_admin_event_path,  class: "btn btn-success btn-lg" %>
+        <%= link_to 'Inscreva-se', event_subscribe_admin_event_path,  class: "btn btn-success btn-lg btn-block" %>
       </div>
     <% end %>
   <%end%>
-
-       <br>
-    <div class="well centered">
-
-      <% if policy(@event).edit? %>
-      <%= link_to 'Editar', edit_admin_event_path(@event) , class: "btn btn-primary" %> &nbsp;
-      <% end %>
-
-
-      <%= link_to 'Usuários do Evento', admin_event_users_path, class: "btn btn-info" %>  &nbsp;
-
-
-      <%= link_to 'Equipes', admin_event_teams_path, class: "btn btn-warning" %>
-    </div>
+  <br>
 </div>
 
 <div class="col-lg-4 col-lg-offset-1">
@@ -70,4 +57,17 @@
 
 </div>
 
+<div class="event_show container">
+    <div class="row well centered">
 
+      <% if policy(@event).edit? %>
+      <%= link_to 'Editar', edit_admin_event_path(@event) , class: "btn btn-primary" %> &nbsp;
+      <% end %>
+
+
+      <%= link_to 'Usuários do Evento', admin_event_users_path, class: "btn btn-info" %>  &nbsp;
+
+
+      <%= link_to 'Equipes', admin_event_teams_path, class: "btn btn-warning" %>
+    </div>
+</div>
