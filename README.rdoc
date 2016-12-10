@@ -1,0 +1,3 @@
+== Hackathon-Pages-Factory
+
+Web Application to Manager Hackathon Events. The platform was made in Ruby on Rails and provide  a control panel that allows manage the teams, projects and the events created.
